@@ -157,6 +157,7 @@ export default function PasteForm({ onScoreChange }) {
 
   return (
     <div>
+      <p className="section-title">{p.sectionTitle}</p>
       <div className="paste-field">
         <label className="field-label" htmlFor="pasteText">{p.textLabel}</label>
         <textarea
