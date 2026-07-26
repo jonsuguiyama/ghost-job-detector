@@ -101,7 +101,10 @@ export const translations = {
       { text: 'Estimativas de mercado apontam entre 18% e 22% das vagas ativas como "vaga fantasma".', source: 'Greenhouse / Entrepreneur, 2025' },
       { text: '27,4% das vagas nos EUA no LinkedIn são prováveis vagas fantasma.', source: 'ResumeUp.AI, via The Interview Guys' },
       { text: '93% dos profissionais de RH admitem publicar vaga fantasma regularmente ou ocasionalmente.', source: 'LiveCareer, 2025' },
-      { text: '1 em cada 7 vagas ativas hoje é uma vaga fantasma.', source: 'Clarify Capital, 2026' }
+      { text: '1 em cada 7 vagas ativas hoje é uma vaga fantasma.', source: 'Clarify Capital, 2026' },
+      { text: '69% dos candidatos ghostados dizem que isso aconteceu depois que o processo de entrevistas já tinha começado.', source: 'LiveCareer, 2025' },
+      { text: '40% das empresas de tecnologia já publicaram pelo menos uma vaga fantasma.', source: 'Greenhouse / ResumeBuilder, via The Interview Guys' },
+      { text: 'Los Angeles tem a maior taxa de vaga fantasma entre as grandes cidades dos EUA: 30,5%.', source: 'Greenhouse / ResumeBuilder, via The Interview Guys' }
     ],
     footer: { builtBy: 'Feito por Jon Suguiyama com' }
   },
@@ -206,7 +209,10 @@ export const translations = {
       { text: 'Industry estimates put 18–22% of active postings as "ghost jobs."', source: 'Greenhouse / Entrepreneur, 2025' },
       { text: '27.4% of U.S. job listings on LinkedIn are likely ghost jobs.', source: 'ResumeUp.AI, via The Interview Guys' },
       { text: '93% of HR professionals admit to posting ghost jobs regularly or occasionally.', source: 'LiveCareer, 2025' },
-      { text: '1 in 7 active job posts today is a ghost job.', source: 'Clarify Capital, 2026' }
+      { text: '1 in 7 active job posts today is a ghost job.', source: 'Clarify Capital, 2026' },
+      { text: '69% of ghosted candidates say it happened after the interview process had already started.', source: 'LiveCareer, 2025' },
+      { text: '40% of tech companies have posted at least one fake job listing.', source: 'Greenhouse / ResumeBuilder, via The Interview Guys' },
+      { text: 'Los Angeles has the highest ghost job rate among major U.S. cities: 30.5%.', source: 'Greenhouse / ResumeBuilder, via The Interview Guys' }
     ],
     footer: { builtBy: 'Built by Jon Suguiyama with' }
   },
@@ -311,7 +317,10 @@ export const translations = {
       { text: 'Estimaciones de la industria ubican entre 18% y 22% de las vacantes activas como "fantasma".', source: 'Greenhouse / Entrepreneur, 2025' },
       { text: '27,4% de las vacantes en EE. UU. en LinkedIn son probables vacantes fantasma.', source: 'ResumeUp.AI, vía The Interview Guys' },
       { text: '93% de los profesionales de RR.HH. admite publicar vacantes fantasma regular u ocasionalmente.', source: 'LiveCareer, 2025' },
-      { text: '1 de cada 7 vacantes activas hoy es una vacante fantasma.', source: 'Clarify Capital, 2026' }
+      { text: '1 de cada 7 vacantes activas hoy es una vacante fantasma.', source: 'Clarify Capital, 2026' },
+      { text: '69% de los candidatos ghosteados dice que ocurrió después de que el proceso de entrevistas ya había comenzado.', source: 'LiveCareer, 2025' },
+      { text: '40% de las empresas de tecnología ya publicó al menos una vacante fantasma.', source: 'Greenhouse / ResumeBuilder, via The Interview Guys' },
+      { text: 'Los Ángeles tiene la tasa más alta de vacantes fantasma entre las grandes ciudades de EE. UU.: 30,5%.', source: 'Greenhouse / ResumeBuilder, via The Interview Guys' }
     ],
     footer: { builtBy: 'Hecho por Jon Suguiyama con' }
   }
