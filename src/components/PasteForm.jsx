@@ -180,6 +180,7 @@ export default function PasteForm({ onScoreChange }) {
             <>
               <p className="required-note" style={{ margin: '0 0 10px' }}>{p.doneMessage}</p>
               <button type="button" className="toggle-btn" onClick={() => setStep(0)}>{p.restartQuestions}</button>
+              <button type="button" className="reset-btn" onClick={reset}>{t.resetLabel}</button>
             </>
           ) : (
             <>
@@ -193,7 +194,6 @@ export default function PasteForm({ onScoreChange }) {
         </div>
       )}
 
-      {!allAnswered && <button className="reset-btn" onClick={reset}>{t.resetLabel}</button>}
     </div>
   );
 }

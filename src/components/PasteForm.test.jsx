@@ -81,16 +81,36 @@ describe('PasteForm - toggle questions (regression: buttons must update state an
   });
 });
 
-describe('PasteForm - reset', () => {
-  it('clears the text and returns to the empty state', async () => {
+describe('PasteForm - reset only appears once the quiz is complete', () => {
+  it('is absent while questions are still in progress', async () => {
+    const user = userEvent.setup();
+    renderPasteForm();
+
+    await user.type(screen.getByLabelText(/Paste the full job description here/), 'Some job text here.');
+    expect(screen.queryByRole('button', { name: 'reset' })).not.toBeInTheDocument();
+
+    await user.type(screen.getByRole('textbox', { name: '' }), '10');
+    await user.click(screen.getByRole('button', { name: /Next/ }));
+    expect(screen.queryByRole('button', { name: 'reset' })).not.toBeInTheDocument();
+  });
+
+  it('appears once all 7 questions are answered, and clears the text', async () => {
     const user = userEvent.setup();
     renderPasteForm();
 
     const textarea = screen.getByLabelText(/Paste the full job description here/);
     await user.type(textarea, 'Some job text here.');
-    expect(textarea).toHaveValue('Some job text here.');
+    await user.type(screen.getByRole('textbox', { name: '' }), '10');
+    await user.click(screen.getByRole('button', { name: /Next/ }));
 
-    await user.click(screen.getByRole('button', { name: 'reset' }));
+    for (let i = 0; i < 6; i++) {
+      await user.click(screen.getAllByRole('button', { name: 'Yes' })[0]);
+    }
+
+    const resetButton = screen.getByRole('button', { name: 'reset' });
+    expect(screen.getByRole('button', { name: /answer again/ })).toBeInTheDocument();
+
+    await user.click(resetButton);
     expect(textarea).toHaveValue('');
   });
 });
