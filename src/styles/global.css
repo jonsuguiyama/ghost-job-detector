@@ -556,11 +556,11 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible, textarea:focus-
 .stat-tile-source{ font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); margin: 0; }
 
 .city-chart{
+  grid-column: span 2;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   padding: 24px 28px;
-  margin-bottom: 32px;
 }
 .city-chart .section-title{ margin-top: 0; }
 .city-chart-rows{ display: flex; flex-direction: column; gap: 14px; margin-top: 16px; }
@@ -574,11 +574,10 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible, textarea:focus-
 
 @media (max-width: 860px){
   .bento-grid{ grid-template-columns: repeat(2, 1fr); }
-  .stat-tile--lg{ grid-column: span 2; grid-row: span 1; }
-  .stat-tile--md{ grid-column: span 2; }
+  .city-chart{ grid-column: span 2; }
   .city-chart-row{ grid-template-columns: 90px 1fr 44px; }
 }
 @media (max-width: 520px){
   .bento-grid{ grid-template-columns: 1fr; }
-  .stat-tile--lg, .stat-tile--md, .stat-tile--sm{ grid-column: span 1; }
+  .city-chart{ grid-column: span 1; }
 }

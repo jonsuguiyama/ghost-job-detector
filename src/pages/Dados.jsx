@@ -38,9 +38,8 @@ export default function Dados() {
       <h1 className="data-title">{t.dataPage.title}</h1>
       <p className="data-sub">{t.dataPage.sub}</p>
 
-      <CityBarChart title={t.dataPage.cityChartTitle} />
-
       <div className="bento-grid">
+        <CityBarChart title={t.dataPage.cityChartTitle} />
         {visibleStats.map((stat) => (
           <StatTile
             key={`${stat.value}-${stat.label}`}
