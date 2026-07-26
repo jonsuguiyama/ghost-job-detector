@@ -32,6 +32,9 @@ export default function Header() {
           <NavLink to="/analise-automatica" className={({ isActive }) => (isActive ? 'active' : '')}>
             {t.nav.analysis}
           </NavLink>
+          <NavLink to="/dados" className={({ isActive }) => (isActive ? 'active' : '')}>
+            {t.nav.data}
+          </NavLink>
           <NavLink to="/sobre" className={({ isActive }) => (isActive ? 'active' : '')}>
             {APP_NAME}
           </NavLink>

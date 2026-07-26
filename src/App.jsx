@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import ChecklistManual from './pages/ChecklistManual';
 import AnaliseAutomatica from './pages/AnaliseAutomatica';
 import Sobre from './pages/Sobre';
+import Dados from './pages/Dados';
 
 const FIXED_FOOTER_PATHS = new Set(['/checklist', '/analise-automatica']);
 
@@ -21,6 +22,7 @@ function AppShell() {
         <Route path="/checklist" element={<ChecklistManual />} />
         <Route path="/analise-automatica" element={<AnaliseAutomatica />} />
         <Route path="/sobre" element={<Sobre />} />
+        <Route path="/dados" element={<Dados />} />
       </Routes>
       <Footer fixed={fixedFooter} />
     </>

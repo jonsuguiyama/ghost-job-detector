@@ -37,10 +37,15 @@ describe('App routing - each page renders without crashing', () => {
     renderAt('/sobre');
     expect(screen.getByRole('heading', { level: 1, name: translations.en.sobrePage.title })).toBeInTheDocument();
   });
+
+  it('renders the Data page at /dados', () => {
+    renderAt('/dados');
+    expect(screen.getByRole('heading', { level: 1, name: translations.en.dataPage.title })).toBeInTheDocument();
+  });
 });
 
 describe('App - header and footer are present on every page', () => {
-  it.each(['/', '/checklist', '/analise-automatica', '/sobre'])('shows nav and footer at %s', (path) => {
+  it.each(['/', '/checklist', '/analise-automatica', '/sobre', '/dados'])('shows nav and footer at %s', (path) => {
     renderAt(path);
     const nav = within(screen.getByRole('navigation'));
     expect(nav.getByRole('link', { name: translations.en.nav.checklist })).toBeInTheDocument();

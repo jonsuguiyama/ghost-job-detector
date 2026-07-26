@@ -2,7 +2,7 @@ import { GITHUB_REPO_URL } from '../lib/constants';
 
 export const translations = {
   pt: {
-    nav: { home: 'Início', checklist: 'Checklist Manual', analysis: 'Análise Automática' },
+    nav: { home: 'Início', checklist: 'Checklist Manual', analysis: 'Análise Automática', data: 'Dados' },
     home: {
       title: 'Essa vaga existe de verdade?',
       sub: 'Aprenda a reconhecer os sinais antes de perder tempo e energia em candidaturas que não vão a lugar nenhum.',
@@ -112,11 +112,31 @@ export const translations = {
       { text: '40% das empresas de tecnologia já publicaram pelo menos uma vaga fantasma.', source: 'Greenhouse / ResumeBuilder, via The Interview Guys' },
       { text: 'Los Angeles tem a maior taxa de vaga fantasma entre as grandes cidades dos EUA: 30,5%.', source: 'Greenhouse / ResumeBuilder, via The Interview Guys' }
     ],
+    dataPage: {
+      title: 'Dados sobre vaga fantasma',
+      sub: 'Estatísticas reais, com fonte, sobre o tamanho do problema. Atualizamos essa página conforme novos dados aparecem.',
+      cityChartTitle: 'taxa de vaga fantasma por cidade (EUA)',
+      loadMore: 'carregar mais'
+    },
+    stats: [
+      { value: '1 em 7', label: 'vagas ativas hoje são vaga fantasma', source: 'Clarify Capital, 2026', size: 'lg' },
+      { value: '93%', label: 'dos profissionais de RH admitem publicar vaga fantasma regularmente ou ocasionalmente', source: 'LiveCareer, 2025', size: 'lg' },
+      { value: '53%', label: 'dos candidatos já encontraram vagas fraudulentas ao procurar emprego', source: 'Job Seeker Nation Report 2026, Employ', size: 'lg' },
+      { value: '18-22%', label: 'das vagas ativas publicadas online são vaga fantasma', source: 'Greenhouse / Entrepreneur, 2025', size: 'md' },
+      { value: '27,4%', label: 'das vagas no LinkedIn (EUA) são prováveis vaga fantasma', source: 'ResumeUp.AI, via The Interview Guys', size: 'md' },
+      { value: '37%', label: 'dos recrutadores mantêm a vaga aberta porque a empresa está "sempre aberta a novos talentos"', source: 'Fast Company, 2025', size: 'md' },
+      { value: '1 em 3', label: 'empregadores manteve vagas abertas por mais de 30 dias em 2025', source: 'Clarify Capital, 2025', size: 'md' },
+      { value: '69%', label: 'dos candidatos ghostados diz que foi depois que o processo de entrevistas já tinha começado', source: 'LiveCareer, 2025', size: 'md' },
+      { value: '40%', label: 'das empresas de tecnologia já publicaram pelo menos uma vaga fantasma', source: 'Greenhouse / ResumeBuilder', size: 'sm' },
+      { value: '24,8%', label: 'das vagas em empresas de porte médio (1 mil a 5 mil funcionários) são fantasma', source: 'Greenhouse / ResumeBuilder', size: 'sm' },
+      { value: '1 em 4', label: 'perfis de candidatos deve ser falso até 2028, segundo previsão', source: 'Gartner, via Fast Company Brasil', size: 'sm' },
+      { value: '30,5%', label: 'taxa de vaga fantasma em Los Angeles, a maior entre grandes cidades dos EUA', source: 'Greenhouse / ResumeBuilder', size: 'sm' }
+    ],
     footer: { builtBy: 'Feito por Jon Suguiyama com' }
   },
 
   en: {
-    nav: { home: 'Home', checklist: 'Manual Checklist', analysis: 'Automatic Analysis' },
+    nav: { home: 'Home', checklist: 'Manual Checklist', analysis: 'Automatic Analysis', data: 'Data' },
     home: {
       title: 'Is this job posting real?',
       sub: 'Learn to spot the signs before you waste time and energy on applications that go nowhere.',
@@ -226,11 +246,31 @@ export const translations = {
       { text: '40% of tech companies have posted at least one fake job listing.', source: 'Greenhouse / ResumeBuilder, via The Interview Guys' },
       { text: 'Los Angeles has the highest ghost job rate among major U.S. cities: 30.5%.', source: 'Greenhouse / ResumeBuilder, via The Interview Guys' }
     ],
+    dataPage: {
+      title: 'Ghost job data',
+      sub: 'Real, sourced statistics on how big this problem actually is. We update this page as new data shows up.',
+      cityChartTitle: 'ghost job rate by city (U.S.)',
+      loadMore: 'load more'
+    },
+    stats: [
+      { value: '1 in 7', label: 'active job posts today is a ghost job', source: 'Clarify Capital, 2026', size: 'lg' },
+      { value: '93%', label: 'of HR professionals admit to posting ghost jobs regularly or occasionally', source: 'LiveCareer, 2025', size: 'lg' },
+      { value: '53%', label: 'of job seekers have encountered fraudulent job postings', source: 'Job Seeker Nation Report 2026, Employ', size: 'lg' },
+      { value: '18-22%', label: 'of active postings online are ghost jobs', source: 'Greenhouse / Entrepreneur, 2025', size: 'md' },
+      { value: '27.4%', label: 'of U.S. job listings on LinkedIn are likely ghost jobs', source: 'ResumeUp.AI, via The Interview Guys', size: 'md' },
+      { value: '37%', label: 'of recruiters keep a posting open because the company is "always open to new people"', source: 'Fast Company, 2025', size: 'md' },
+      { value: '1 in 3', label: 'employers kept job postings active for more than 30 days in 2025', source: 'Clarify Capital, 2025', size: 'md' },
+      { value: '69%', label: 'of ghosted candidates say it happened after the interview process had already started', source: 'LiveCareer, 2025', size: 'md' },
+      { value: '40%', label: 'of tech companies have posted at least one fake job listing', source: 'Greenhouse / ResumeBuilder', size: 'sm' },
+      { value: '24.8%', label: 'of postings at mid-size companies (1K-5K employees) are ghost jobs', source: 'Greenhouse / ResumeBuilder', size: 'sm' },
+      { value: '1 in 4', label: 'candidate profiles is expected to be fake by 2028, according to a forecast', source: 'Gartner, via Fast Company Brasil', size: 'sm' },
+      { value: '30.5%', label: 'ghost job rate in Los Angeles, the highest among major U.S. cities', source: 'Greenhouse / ResumeBuilder', size: 'sm' }
+    ],
     footer: { builtBy: 'Built by Jon Suguiyama with' }
   },
 
   es: {
-    nav: { home: 'Inicio', checklist: 'Checklist Manual', analysis: 'Análisis Automático' },
+    nav: { home: 'Inicio', checklist: 'Checklist Manual', analysis: 'Análisis Automático', data: 'Datos' },
     home: {
       title: '¿Esta vacante existe de verdad?',
       sub: 'Aprende a reconocer las señales antes de perder tiempo y energía en postulaciones que no van a ningún lado.',
@@ -339,6 +379,26 @@ export const translations = {
       { text: '69% de los candidatos ghosteados dice que ocurrió después de que el proceso de entrevistas ya había comenzado.', source: 'LiveCareer, 2025' },
       { text: '40% de las empresas de tecnología ya publicó al menos una vacante fantasma.', source: 'Greenhouse / ResumeBuilder, via The Interview Guys' },
       { text: 'Los Ángeles tiene la tasa más alta de vacantes fantasma entre las grandes ciudades de EE. UU.: 30,5%.', source: 'Greenhouse / ResumeBuilder, via The Interview Guys' }
+    ],
+    dataPage: {
+      title: 'Datos sobre vacantes fantasma',
+      sub: 'Estadísticas reales, con fuente, sobre el tamaño real de este problema. Actualizamos esta página a medida que aparecen nuevos datos.',
+      cityChartTitle: 'tasa de vacantes fantasma por ciudad (EE. UU.)',
+      loadMore: 'cargar más'
+    },
+    stats: [
+      { value: '1 de 7', label: 'vacantes activas hoy es una vacante fantasma', source: 'Clarify Capital, 2026', size: 'lg' },
+      { value: '93%', label: 'de los profesionales de RR.HH. admite publicar vacantes fantasma regular u ocasionalmente', source: 'LiveCareer, 2025', size: 'lg' },
+      { value: '53%', label: 'de quienes buscan empleo ya se encontraron con vacantes fraudulentas', source: 'Job Seeker Nation Report 2026, Employ', size: 'lg' },
+      { value: '18-22%', label: 'de las vacantes activas publicadas en línea son fantasma', source: 'Greenhouse / Entrepreneur, 2025', size: 'md' },
+      { value: '27,4%', label: 'de las vacantes en LinkedIn (EE. UU.) son probables vacantes fantasma', source: 'ResumeUp.AI, vía The Interview Guys', size: 'md' },
+      { value: '37%', label: 'de los reclutadores mantiene la vacante abierta porque la empresa está "siempre abierta a nuevos talentos"', source: 'Fast Company, 2025', size: 'md' },
+      { value: '1 de 3', label: 'empleadores mantuvo vacantes activas por más de 30 días en 2025', source: 'Clarify Capital, 2025', size: 'md' },
+      { value: '69%', label: 'de los candidatos ghosteados dice que fue después de que el proceso de entrevistas ya había comenzado', source: 'LiveCareer, 2025', size: 'md' },
+      { value: '40%', label: 'de las empresas de tecnología ya publicó al menos una vacante fantasma', source: 'Greenhouse / ResumeBuilder', size: 'sm' },
+      { value: '24,8%', label: 'de las vacantes en empresas de tamaño medio (1 mil a 5 mil empleados) son fantasma', source: 'Greenhouse / ResumeBuilder', size: 'sm' },
+      { value: '1 de 4', label: 'perfiles de candidatos será falso para 2028, según una previsión', source: 'Gartner, vía Fast Company Brasil', size: 'sm' },
+      { value: '30,5%', label: 'tasa de vacante fantasma en Los Ángeles, la más alta entre grandes ciudades de EE. UU.', source: 'Greenhouse / ResumeBuilder', size: 'sm' }
     ],
     footer: { builtBy: 'Hecho por Jon Suguiyama con' }
   }
