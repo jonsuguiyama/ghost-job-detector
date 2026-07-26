@@ -2,7 +2,7 @@
 
 Checklist and automatic text analysis to tell whether a job posting is real or a ghost job — PT/EN/ES, with real sources.
 
-> Provisional name. Update `src/lib/constants.js` (`APP_NAME`) and `index.html` once you've confirmed a name is available on Vercel (see below).
+Live at [ghostgig.vercel.app](https://ghostgig.vercel.app).
 
 ## Stack
 

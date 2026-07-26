@@ -384,7 +384,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible, textarea:focus-
   cursor: pointer;
   transition: border-color .15s, background .15s, transform .1s;
 }
-.item:hover{ border-color: var(--line-strong); }
+.item:hover{ border-color: var(--accent); }
 .item:active{ transform: scale(0.995); }
 .item.checked{ background: var(--surface-2); border-color: var(--accent); }
 .item-checkbox{
