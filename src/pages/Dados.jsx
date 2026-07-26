@@ -33,6 +33,18 @@ export default function Dados() {
 
   const visibleStats = stats.slice(0, visibleCount);
   const hasMore = visibleCount < stats.length;
+  const firstRows = visibleStats.slice(0, 4);
+  const restRows = visibleStats.slice(4);
+
+  const renderTile = (stat) => (
+    <StatTile
+      key={`${stat.value}-${stat.label}`}
+      value={stat.value}
+      label={stat.label}
+      source={stat.source}
+      span={stat.span}
+    />
+  );
 
   return (
     <div className="page-wrap">
@@ -40,21 +52,14 @@ export default function Dados() {
       <p className="data-sub">{t.dataPage.sub}</p>
 
       <div className="bento-grid">
+        {firstRows.map(renderTile)}
         <CityBarChart title={t.dataPage.cityChartTitle} />
+        {restRows.map(renderTile)}
         <WaffleChart
           percent={t.dataPage.waffleStat.percent}
           label={t.dataPage.waffleStat.label}
           source={t.dataPage.waffleStat.source}
         />
-        {visibleStats.map((stat) => (
-          <StatTile
-            key={`${stat.value}-${stat.label}`}
-            value={stat.value}
-            label={stat.label}
-            source={stat.source}
-            size={stat.size}
-          />
-        ))}
       </div>
 
       {hasMore && <div ref={sentinelRef} className="load-more-sentinel" />}

@@ -535,7 +535,6 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible, textarea:focus-
 .bento-grid{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  align-items: start;
   gap: 16px;
   margin-bottom: 32px;
 }
@@ -550,8 +549,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible, textarea:focus-
   transition: border-color .15s;
 }
 .stat-tile:hover{ border-color: var(--accent); }
-.stat-tile-value{ font-size: 32px; font-weight: 700; color: var(--accent); margin: 0 0 10px; line-height: 1; }
-.stat-tile--lg .stat-tile-value{ font-size: 44px; }
+.stat-tile-value{ font-size: 36px; font-weight: 700; color: var(--accent); margin: 0 0 10px; line-height: 1; }
 .stat-tile-label{ font-size: 14px; color: var(--text); line-height: 1.4; margin: 0 0 12px; }
 .stat-tile-source{ font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); margin: 0; }
 

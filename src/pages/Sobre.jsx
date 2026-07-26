@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { useLanguage } from '../i18n/LanguageContext';
 import QuoteCarousel from '../components/QuoteCarousel';
 import FaqAccordion from '../components/FaqAccordion';
@@ -25,8 +24,6 @@ export default function Sobre() {
           </div>
 
           <FaqAccordion />
-          <p className="section-title">{t.sourcesTitle}</p>
-          <Link to="/dados" className="btn">{t.sourcesPageLink}</Link>
         </div>
       </div>
     </div>
