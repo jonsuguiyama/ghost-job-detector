@@ -1,4 +1,4 @@
-// Serverless function (Vercel) — proxies Umami Cloud's stats API server-side so the
+// Serverless function (Vercel) - proxies Umami Cloud's stats API server-side so the
 // API key never reaches the browser. Returns { count: number | null }.
 // Requires env vars UMAMI_API_KEY and UMAMI_WEBSITE_ID (set in Vercel project settings).
 // Optional UMAMI_LAUNCH_TIMESTAMP (ms since epoch) to mark the start of the all-time range.

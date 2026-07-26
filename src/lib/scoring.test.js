@@ -3,7 +3,7 @@ import { itemWeights, itemIds, maxWeight, bucketFor, analyzeText } from './scori
 
 describe('itemWeights / itemIds', () => {
   it('have the same length', () => {
-    expect(itemWeights.length).toBe(itemIds.length);
+    expect(itemWeights).toHaveLength(itemIds.length);
   });
 
   it('maxWeight is the sum of all weights', () => {
@@ -87,10 +87,13 @@ describe('analyzeText - genericness detection', () => {
   });
 
   it('does not flag a long, buzzword-free description as generic', () => {
-    const text = 'We are hiring a backend engineer to own our payments service. '
-      + 'You will work directly with our CTO and the two other engineers on the team, '
-      + 'using Node.js, PostgreSQL and AWS. Salary range is R$12.000 to R$16.000. '
-      + 'Team: Payments Platform, reporting to Maria Silva.'.repeat(2);
+    const text = 'We are hiring a backend engineer to own our payments service end to end. '
+      + 'You will work directly with our CTO, Maria Silva, and the two other engineers '
+      + 'already on the Payments Platform team, using Node.js, PostgreSQL and AWS. '
+      + 'The salary range for this role is R$12.000 to R$16.000 per month, and includes '
+      + 'on-call rotation, code review duties, and direct communication with our three '
+      + 'largest enterprise customers.';
+    expect(text.length).toBeGreaterThan(400);
     expect(analyzeText(text).isGeneric).toBe(false);
   });
 });
