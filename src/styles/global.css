@@ -15,11 +15,11 @@
   --text-secondary: #9d9d9d;    /* description foreground */
   --muted: #868686;
 
-  /* single restrained accent — used sparingly (links, focus, active state) */
+  /* single restrained accent - used sparingly (links, focus, active state) */
   --accent: #3794ff;   /* textLink.foreground */
   --focus: #3794ff;
 
-  /* status palette — same as VS Code's Problems/Git decorations, reserved for verdict/risk only */
+  /* status palette - same as VS Code's Problems/Git decorations, reserved for verdict/risk only */
   --status-good: #89d185;
   --status-warning: #cca700;
   --status-critical: #f14c4c;
@@ -294,7 +294,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible, textarea:focus-
 .gauge-ticks{
   display: flex;
   justify-content: space-between;
-  width: 220px;
+  width: 270px;
   margin-top: -6px;
   font-family: 'IBM Plex Mono', monospace;
   font-size: 10px;
@@ -342,16 +342,25 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible, textarea:focus-
   display: grid;
   grid-template-columns: 0.85fr 1.15fr;
   gap: 40px;
-  padding: 36px 0;
+  padding: 0 0 36px;
   align-items: start;
 }
-.split-left{ position: sticky; top: calc(var(--header-height) + 24px); align-self: start; }
+.split-left{
+  position: sticky;
+  top: var(--header-height);
+  height: calc(100vh - var(--header-height));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: start;
+}
+.split-right{ padding-top: 24px; }
 .split-left h1{ font-size: 30px; margin: 0 0 10px; font-weight: 700; letter-spacing: -0.02em; }
 .split-left .sub{ font-size: 14.5px; color: var(--text-secondary); line-height: 1.55; margin: 0 0 22px; }
 
 @media (max-width: 900px){
   .split-layout{ grid-template-columns: 1fr; }
-  .split-left{ position: static; }
+  .split-left{ position: static; height: auto; padding-top: 24px; }
 }
 
 /* ---------- mode switch (kept for backward compat inside pages) ---------- */
@@ -419,6 +428,8 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible, textarea:focus-
 .paste-textarea::-webkit-scrollbar-thumb{ background: var(--line-strong); border-radius: var(--radius-pill); }
 .paste-textarea:focus{ border-color: var(--accent); }
 .paste-number{
+  appearance: none;
+  -webkit-appearance: none;
   width: 120px;
   background: var(--surface);
   border: 1px solid var(--line);
@@ -428,8 +439,9 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible, textarea:focus-
   font-size: 14px;
   padding: 10px 12px;
   display: block;
+  box-shadow: none;
 }
-.paste-number:focus{ border-color: var(--accent); }
+.paste-number:focus{ border-color: var(--accent); outline: none; }
 
 .quiz-box{
   background: var(--surface);

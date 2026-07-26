@@ -30,7 +30,7 @@ export default function QuoteCarousel() {
     <div className="quote-carousel">
       <blockquote key={index} className="quote-enter">
         “{quote.text}”
-        <cite>— {quote.source}</cite>
+        <cite>{quote.source}</cite>
       </blockquote>
       <style>{`
         @keyframes quoteEnter {

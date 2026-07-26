@@ -76,6 +76,10 @@ export default function PasteForm({ onScoreChange }) {
     }
   };
 
+  const setDays = (value) => {
+    setAnswers((prev) => ({ ...prev, days: value }));
+  };
+
   const advanceDays = () => {
     if (answers.days === '' || Number.isNaN(Number.parseInt(answers.days, 10))) return;
     track('paste-field-set', { field: 'days', value: answers.days });
@@ -95,7 +99,7 @@ export default function PasteForm({ onScoreChange }) {
             inputMode="numeric"
             className="paste-number"
             value={answers.days}
-            onChange={(e) => setAnswer('days', e.target.value.replace(/[^0-9]/g, ''))}
+            onChange={(e) => setDays(e.target.value.replace(/\D/g, ''))}
             onKeyDown={(e) => { if (e.key === 'Enter') advanceDays(); }}
           />
           {step === 0 && (
@@ -107,37 +111,37 @@ export default function PasteForm({ onScoreChange }) {
     aggregator: (
       <div className="paste-field">
         <p className="field-label">{p.aggregatorLabel}</p>
-        <ToggleGroup field="aggregator" options={yn} />
+        <ToggleGroup value={answers.aggregator} options={yn} onSelect={(v) => setAnswer('aggregator', v)} />
       </div>
     ),
     form: (
       <div className="paste-field">
         <p className="field-label">{p.formLabel}</p>
-        <ToggleGroup field="form" options={yn} />
+        <ToggleGroup value={answers.form} options={yn} onSelect={(v) => setAnswer('form', v)} />
       </div>
     ),
     duplicate: (
       <div className="paste-field">
         <p className="field-label">{p.duplicateLabel}</p>
-        <ToggleGroup field="duplicate" options={yn} />
+        <ToggleGroup value={answers.duplicate} options={yn} onSelect={(v) => setAnswer('duplicate', v)} />
       </div>
     ),
     evergreen: (
       <div className="paste-field">
         <p className="field-label">{p.evergreenLabel}</p>
-        <ToggleGroup field="evergreen" options={ynu} />
+        <ToggleGroup value={answers.evergreen} options={ynu} onSelect={(v) => setAnswer('evergreen', v)} />
       </div>
     ),
     silence: (
       <div className="paste-field">
         <p className="field-label">{p.silenceLabel}</p>
-        <ToggleGroup field="silence" options={ynu} />
+        <ToggleGroup value={answers.silence} options={ynu} onSelect={(v) => setAnswer('silence', v)} />
       </div>
     ),
     freeze: (
       <div className="paste-field">
         <p className="field-label">{p.freezeLabel}</p>
-        <ToggleGroup field="freeze" options={ynu} />
+        <ToggleGroup value={answers.freeze} options={ynu} onSelect={(v) => setAnswer('freeze', v)} />
       </div>
     )
   };

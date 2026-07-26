@@ -19,12 +19,12 @@ export const translations = {
     },
     checklistPage: {
       title: 'Checklist Manual',
-      sub: 'Marque o que se aplica à vaga que você está analisando. Nada aqui é 100% garantido — mas quanto maior o risco de "vaga fantasma", menos vale a pena investir tempo nessa candidatura.',
+      sub: 'Marque o que se aplica à vaga que você está analisando. Nada aqui é 100% garantido - mas quanto maior o risco de "vaga fantasma", menos vale a pena investir tempo nessa candidatura.',
       sectionSignals: 'sinais de alerta'
     },
     analysisPage: {
       title: 'Análise Automática',
-      sub: 'Cole o texto completo da vaga e responda os campos obrigatórios — a gente detecta alguns sinais automaticamente no texto e calcula o resultado com o resto.'
+      sub: 'Cole o texto completo da vaga e responda os campos obrigatórios - a gente detecta alguns sinais automaticamente no texto e calcula o resultado com o resto.'
     },
     weightLabel: 'peso',
     resetLabel: 'reiniciar',
@@ -41,6 +41,7 @@ export const translations = {
       'Várias vagas idênticas abertas ao mesmo tempo pra mesma posição'
     ],
     paste: {
+      sectionTitle: 'detalhes da vaga',
       textLabel: 'Cole aqui a descrição completa da vaga *',
       daysLabel: 'Há quantos dias a vaga está publicada? *',
       aggregatorLabel: 'Só aparece em agregador (LinkedIn/Indeed), não no site oficial da empresa? *',
@@ -54,7 +55,7 @@ export const translations = {
       backLabel: '‹ voltar',
       nextLabel: 'Avançar →',
       progressTemplate: (n) => `pergunta ${n} / 7`,
-      doneMessage: 'Análise completa — o resultado está atualizado no medidor ao lado.',
+      doneMessage: 'Análise completa - o resultado está atualizado no medidor ao lado.',
       restartQuestions: 'responder de novo',
       incomplete: { label: 'aguardando dados', verdict: 'Preencha os campos obrigatórios', status: 'neutral', detail: 'Cole o texto da vaga e responda os campos marcados com * pra ver o resultado.' },
       autoSalaryAbsent: '🔎 Auto-detectado: nenhuma faixa salarial encontrada no texto',
@@ -70,31 +71,31 @@ export const translations = {
     steps: [
       { lead: 'Cheque a página de carreiras da empresa.', rest: 'Se a vaga só existe no LinkedIn/Indeed/Catho mas não no site oficial, desconfie.' },
       { lead: 'Procure o badge "Contratando ativamente"', rest: 'no LinkedIn, ou posts recentes de funcionários mencionando a vaga.' },
-      { lead: 'Puxe conversa direto com alguém do time', rest: '(recrutador ou gestor) em vez de só aplicar pelo formulário — pergunte se a posição está ativa.' },
+      { lead: 'Puxe conversa direto com alguém do time', rest: '(recrutador ou gestor) em vez de só aplicar pelo formulário - pergunte se a posição está ativa.' },
       { lead: 'Olhe a data de publicação x última atualização.', rest: 'Vaga aberta há 45+ dias sendo "atualizada" sozinha sugere um script mantendo o pipeline vivo, não uma contratação real.' },
       { lead: 'Pesquise o nome da empresa + "layoff" ou "demissão em massa".', rest: 'Se a empresa cortou pessoal recentemente no mesmo time, a vaga pode ser só formalidade.' },
       { lead: 'Cole o título exato da vaga + nome da empresa entre aspas no Google.', rest: 'Se a mesma vaga aparece publicada em datas bem diferentes ao longo dos meses, é forte indício de vaga evergreen.' }
     ],
     faqTitle: 'FAQ',
     faq: [
-      { q: 'Como eu posso ajudar?', a: 'Divulgue esse app pra quem tá na correria de procurar emprego — quanto mais gente souber reconhecer uma vaga fantasma, menos tempo e energia a gente perde nesse jogo. E o combo mais poderoso de todos: você conhece alguém desempregado? Você conhece alguém contratando? Conecta essas duas pessoas. Isso vale muito mais que qualquer vaga publicada — currículo às vezes empaca no ATS, mas indicação de gente de confiança fura fila. Nesse mercado meio bizarro de vaga fantasma, a gente só sobrevive não largando a mão de ninguém.' },
-      { q: 'Sou recrutador(a) e tenho mais sugestões — como contribuo?', a: `Abra uma <a href="${GITHUB_REPO_URL}/issues" target="_blank" rel="noopener noreferrer">issue no GitHub</a> contando sua sugestão. Feedback de quem tá do lado de dentro do processo de contratação é especialmente bem-vindo.` },
-      { q: 'Como devo otimizar meu currículo pra aumentar minhas chances?', a: 'Adapte as palavras-chave do currículo às da descrição da vaga, quantifique resultados ("aumentei X em Y%") em vez de só listar tarefas, mantenha 1-2 páginas num formato simples que passe por sistemas de triagem automática (ATS), e garanta que as competências obrigatórias da vaga apareçam claramente. E um conselho meio contraintuitivo: aplique só pra vagas que realmente fazem sentido pro seu perfil — disparar currículo pra tudo quanto é vaga ("spray and pray") dilui sua energia e geralmente rende taxa de resposta pior do que poucas candidaturas bem direcionadas.' },
-      { q: 'Os sinais aqui garantem que a vaga é falsa?', a: '⚠️ Não. Isso aqui é um termômetro, não uma bola de cristal — os sinais e pesos vêm de pesquisas de mercado (fontes logo abaixo) e de uma heurística nossa, não de dados da vaga específica que você tá olhando. Pode errar pros dois lados: vaga real pode acender vários sinais, e vaga fantasma pode passar batida. Use o resultado como ponto de partida pra investigar, nunca como veredito final — sempre vale confirmar pelos passos práticos ao lado antes de descartar uma vaga.' },
+      { q: 'Como eu posso ajudar?', a: 'Divulgue esse app pra quem tá na correria de procurar emprego - quanto mais gente souber reconhecer uma vaga fantasma, menos tempo e energia a gente perde nesse jogo. E o combo mais poderoso de todos: você conhece alguém desempregado? Você conhece alguém contratando? Conecta essas duas pessoas. Isso vale muito mais que qualquer vaga publicada - currículo às vezes empaca no ATS, mas indicação de gente de confiança fura fila. Nesse mercado meio bizarro de vaga fantasma, a gente só sobrevive não largando a mão de ninguém.' },
+      { q: 'Sou recrutador(a) e tenho mais sugestões - como contribuo?', a: `Abra uma <a href="${GITHUB_REPO_URL}/issues" target="_blank" rel="noopener noreferrer">issue no GitHub</a> contando sua sugestão. Feedback de quem tá do lado de dentro do processo de contratação é especialmente bem-vindo.` },
+      { q: 'Como devo otimizar meu currículo pra aumentar minhas chances?', a: 'Adapte as palavras-chave do currículo às da descrição da vaga, quantifique resultados ("aumentei X em Y%") em vez de só listar tarefas, mantenha 1-2 páginas num formato simples que passe por sistemas de triagem automática (ATS), e garanta que as competências obrigatórias da vaga apareçam claramente. E um conselho meio contraintuitivo: aplique só pra vagas que realmente fazem sentido pro seu perfil - disparar currículo pra tudo quanto é vaga ("spray and pray") dilui sua energia e geralmente rende taxa de resposta pior do que poucas candidaturas bem direcionadas.' },
+      { q: 'Os sinais aqui garantem que a vaga é falsa?', a: '⚠️ Não. Isso aqui é um termômetro, não uma bola de cristal - os sinais e pesos vêm de pesquisas de mercado (fontes logo abaixo) e de uma heurística nossa, não de dados da vaga específica que você tá olhando. Pode errar pros dois lados: vaga real pode acender vários sinais, e vaga fantasma pode passar batida. Use o resultado como ponto de partida pra investigar, nunca como veredito final - sempre vale confirmar pelos passos práticos ao lado antes de descartar uma vaga.' },
       { q: 'Vale a pena aplicar mesmo estando na "zona cinzenta"?', a: 'Geralmente sim, se a candidatura for rápida. O custo de aplicar é baixo comparado ao de ignorar uma vaga real. Só evite gastar horas customizando currículo e carta pra uma vaga com muitos sinais de alerta.' },
-      { q: 'A descrição da vaga e informações que compartilho aqui ficam salvas em algum lugar?', a: 'Não. Toda a análise roda localmente no seu navegador — nada do texto colado ou das respostas que você preenche é enviado pra nenhum servidor. A única coisa registrada de forma anônima é via Umami (uma ferramenta de analytics focada em privacidade, sem cookies): eventos agregados tipo qual veredito apareceu, qual idioma foi selecionado ou qual página foi visitada. A gente guarda isso só pra entender quais partes do app são mais usadas e melhorar a ferramenta — nunca pra te identificar ou ver o conteúdo da vaga que você analisou.' },
-      { q: 'Quem é Jon Suguiyama?', a: 'Comecei minha carreira em desenvolvimento web em 2007 — HTML, CSS e muito ActionScript, construindo aqueles banners animados "milagre de 16kb" que hoje parecem uma lição antecipada de engenharia sob restrição. Depois passei mais de uma década liderando times criativos — Senior Art Director, Head of Design, Concept Artist — em campanhas publicitárias nacionais, animação pro mercado de e-sports e um jogo construído do zero dentro de uma startup acelerada, sem nunca parar de programar de vez. Hoje voltei pra onde comecei: full-stack com Angular, React, TypeScript e Node.js — projetos recentes incluem um gerenciador de tarefas drag-and-drop com sistema de demo ao vivo (sessões por token, PostgreSQL), uma ferramenta de CSV pra dashboard (React, Recharts) e este detector de vaga fantasma. Também estou aprofundando backend — Java, Spring Boot, infraestrutura cloud — numa pós-graduação em Arquitetura de Software. O que trago de diferente: já sentei na reunião com cliente, na sala de pitch e na pipeline de produção, não só no código — sei traduzir um problema de negócio em algo que as pessoas realmente querem usar. Buscando oportunidades como desenvolvedor(a) full-stack. <a href="https://github.com/jonsuguiyama" target="_blank" rel="noopener noreferrer">GitHub</a> · <a href="https://behance.net/jonsuguiyama" target="_blank" rel="noopener noreferrer">Behance</a>' }
+      { q: 'A descrição da vaga e informações que compartilho aqui ficam salvas em algum lugar?', a: 'Não. Toda a análise roda localmente no seu navegador - nada do texto colado ou das respostas que você preenche é enviado pra nenhum servidor. A única coisa registrada de forma anônima é via Umami (uma ferramenta de analytics focada em privacidade, sem cookies): eventos agregados tipo qual veredito apareceu, qual idioma foi selecionado ou qual página foi visitada. A gente guarda isso só pra entender quais partes do app são mais usadas e melhorar a ferramenta - nunca pra te identificar ou ver o conteúdo da vaga que você analisou.' },
+      { q: 'Quem é Jon Suguiyama?', a: 'Comecei minha carreira em desenvolvimento web em 2007 - HTML, CSS e muito ActionScript, construindo aqueles banners animados "milagre de 16kb" que hoje parecem uma lição antecipada de engenharia sob restrição. Depois passei mais de uma década liderando times criativos - Senior Art Director, Head of Design, Concept Artist - em campanhas publicitárias nacionais, animação pro mercado de e-sports e um jogo construído do zero dentro de uma startup acelerada, sem nunca parar de programar de vez. Hoje voltei pra onde comecei: full-stack com Angular, React, TypeScript e Node.js - projetos recentes incluem um gerenciador de tarefas drag-and-drop com sistema de demo ao vivo (sessões por token, PostgreSQL), uma ferramenta de CSV pra dashboard (React, Recharts) e este detector de vaga fantasma. Também estou aprofundando backend - Java, Spring Boot, infraestrutura cloud - numa pós-graduação em Arquitetura de Software. O que trago de diferente: já sentei na reunião com cliente, na sala de pitch e na pipeline de produção, não só no código - sei traduzir um problema de negócio em algo que as pessoas realmente querem usar. Buscando oportunidades como desenvolvedor(a) full-stack. <a href="https://github.com/jonsuguiyama" target="_blank" rel="noopener noreferrer">GitHub</a> · <a href="https://behance.net/jonsuguiyama" target="_blank" rel="noopener noreferrer">Behance</a>' }
     ],
     sourcesTitle: 'fontes',
     sources: [
-      { name: 'Clarify Capital — Ghost Jobs 2.0 (2025)', url: 'https://clarifycapital.com/ghost-jobs' },
-      { name: 'Clarify Capital — análise 2026', url: 'https://clarifycapital.com/ghost-jobs-2026' },
-      { name: 'Fast Company — recrutadores sobre vaga fantasma (2025)', url: 'https://www.fastcompany.com/91425252/recruiters-dish-on-ghost-jobs-why-companies-post-them-and-how-to-outsmart-them' },
-      { name: 'Entrepreneur — cobertura do estudo da Greenhouse (2025)', url: 'https://www.entrepreneur.com/business-news/one-quarter-of-jobs-posted-online-are-fake-ghost-jobs-study/496683' },
-      { name: 'The Interview Guys — Ghost Jobs Exposed', url: 'https://blog.theinterviewguys.com/ghost-jobs-exposed/' },
-      { name: 'The Interview Guys — 2025 Ghosting Index', url: 'https://blog.theinterviewguys.com/the-2025-ghosting-index/' },
-      { name: 'LiveCareer — RH admite publicar vaga fantasma', url: 'https://www.livecareer.com/resources/careers/ghost-jobs' },
-      { name: 'Congressional Research Service — "Ghost" Job Postings', url: 'https://www.congress.gov/crs-product/IF12977' }
+      { name: 'Clarify Capital - Ghost Jobs 2.0 (2025)', url: 'https://clarifycapital.com/ghost-jobs' },
+      { name: 'Clarify Capital - análise 2026', url: 'https://clarifycapital.com/ghost-jobs-2026' },
+      { name: 'Fast Company - recrutadores sobre vaga fantasma (2025)', url: 'https://www.fastcompany.com/91425252/recruiters-dish-on-ghost-jobs-why-companies-post-them-and-how-to-outsmart-them' },
+      { name: 'Entrepreneur - cobertura do estudo da Greenhouse (2025)', url: 'https://www.entrepreneur.com/business-news/one-quarter-of-jobs-posted-online-are-fake-ghost-jobs-study/496683' },
+      { name: 'The Interview Guys - Ghost Jobs Exposed', url: 'https://blog.theinterviewguys.com/ghost-jobs-exposed/' },
+      { name: 'The Interview Guys - 2025 Ghosting Index', url: 'https://blog.theinterviewguys.com/the-2025-ghosting-index/' },
+      { name: 'LiveCareer - RH admite publicar vaga fantasma', url: 'https://www.livecareer.com/resources/careers/ghost-jobs' },
+      { name: 'Congressional Research Service - "Ghost" Job Postings', url: 'https://www.congress.gov/crs-product/IF12977' }
     ],
     quotes: [
       { text: 'Quase 1 em cada 3 empregadores manteve vagas abertas por mais de 30 dias em 2025.', source: 'Clarify Capital, 2025' },
@@ -125,12 +126,12 @@ export const translations = {
     },
     checklistPage: {
       title: 'Manual Checklist',
-      sub: 'Check off what applies to the job you\'re analyzing. None of this is 100% guaranteed — but the higher the "ghost job" risk, the less it\'s worth investing time in that application.',
+      sub: 'Check off what applies to the job you\'re analyzing. None of this is 100% guaranteed - but the higher the "ghost job" risk, the less it\'s worth investing time in that application.',
       sectionSignals: 'warning signs'
     },
     analysisPage: {
       title: 'Automatic Analysis',
-      sub: 'Paste the full job text and answer the required fields — we auto-detect a couple of signals in the text and calculate the result with the rest.'
+      sub: 'Paste the full job text and answer the required fields - we auto-detect a couple of signals in the text and calculate the result with the rest.'
     },
     weightLabel: 'weight',
     resetLabel: 'reset',
@@ -138,7 +139,7 @@ export const translations = {
     items: [
       'Posted 30–45+ days ago and still live',
       'No salary range listed',
-      'Generic, copy-paste description — no team name, manager, or specific tech stack',
+      'Generic, copy-paste description - no team name, manager, or specific tech stack',
       'Only appears on an aggregator (LinkedIn/Indeed), not on the company\'s own careers page',
       'The same posting keeps reappearing over time ("evergreen" listing)',
       'Total silence after applying, even after 2+ weeks',
@@ -160,7 +161,7 @@ export const translations = {
       backLabel: '‹ back',
       nextLabel: 'Next →',
       progressTemplate: (n) => `question ${n} / 7`,
-      doneMessage: 'Analysis complete — the result is updated on the gauge.',
+      doneMessage: 'Analysis complete - the result is updated on the gauge.',
       restartQuestions: 'answer again',
       incomplete: { label: 'waiting for input', verdict: 'Fill in the required fields', status: 'neutral', detail: 'Paste the job text and answer the fields marked with * to see a result.' },
       autoSalaryAbsent: '🔎 Auto-detected: no salary range found in the text',
@@ -176,31 +177,31 @@ export const translations = {
     steps: [
       { lead: 'Check the company\'s own careers page.', rest: 'If the job only exists on LinkedIn/Indeed but not on the official site, be suspicious.' },
       { lead: 'Look for an "actively hiring" badge', rest: 'on LinkedIn, or recent employee posts mentioning the role.' },
-      { lead: 'Reach out directly to someone on the team', rest: '(recruiter or manager) instead of just applying through the form — ask if the position is still open.' },
+      { lead: 'Reach out directly to someone on the team', rest: '(recruiter or manager) instead of just applying through the form - ask if the position is still open.' },
       { lead: 'Compare the posting date vs. the last updated date.', rest: 'A listing open 45+ days that keeps "updating" itself suggests an automated script keeping the pipeline alive, not a real hire.' },
       { lead: 'Search the company name + "layoffs".', rest: 'If the company recently cut staff on the same team, the posting might just be a formality.' },
       { lead: 'Google the exact job title + company name in quotes.', rest: 'If the same posting shows up published on very different dates across months, that\'s a strong evergreen signal.' }
     ],
     faqTitle: 'FAQ',
     faq: [
-      { q: 'How can I help?', a: 'Share this app with anyone in the middle of a job search — the more people who can spot a ghost job, the less time and energy we all waste on this game. And the single most powerful move of all: do you know someone unemployed? Do you know someone hiring? Connect them. That\'s worth more than any job posting — a resume can get stuck in an ATS, but a trusted referral skips the line. In this weird ghost-job economy, the way we get through it is by not letting go of each other\'s hand.' },
-      { q: 'I\'m a recruiter and have more suggestions — how do I contribute?', a: `Open an <a href="${GITHUB_REPO_URL}/issues" target="_blank" rel="noopener noreferrer">issue on GitHub</a> with your suggestion. Feedback from people on the hiring side of the process is especially welcome.` },
-      { q: 'How should I optimize my resume to improve my chances?', a: 'Match your resume\'s keywords to the job description, quantify results ("increased X by Y%") instead of just listing duties, keep it to 1-2 pages in a simple format that passes applicant tracking systems (ATS), and make sure the posting\'s required skills show up clearly. One slightly counterintuitive tip: only apply to postings that genuinely fit your profile — spray-and-pray applications dilute your energy and usually get a worse response rate than a handful of well-targeted ones.' },
-      { q: 'Do these signals guarantee the posting is fake?', a: '⚠️ No. This is a thermometer, not a crystal ball — the signals and weights come from market research (sources further down) and our own heuristic, not from data about the specific job you\'re checking. It can be wrong in both directions: a real job can trigger several signals, and a ghost job can slip by undetected. Treat the result as a starting point for your own digging, never a final verdict — it\'s always worth confirming through the practical steps beside this before writing off a posting.' },
+      { q: 'How can I help?', a: 'Share this app with anyone in the middle of a job search - the more people who can spot a ghost job, the less time and energy we all waste on this game. And the single most powerful move of all: do you know someone unemployed? Do you know someone hiring? Connect them. That\'s worth more than any job posting - a resume can get stuck in an ATS, but a trusted referral skips the line. In this weird ghost-job economy, the way we get through it is by not letting go of each other\'s hand.' },
+      { q: 'I\'m a recruiter and have more suggestions - how do I contribute?', a: `Open an <a href="${GITHUB_REPO_URL}/issues" target="_blank" rel="noopener noreferrer">issue on GitHub</a> with your suggestion. Feedback from people on the hiring side of the process is especially welcome.` },
+      { q: 'How should I optimize my resume to improve my chances?', a: 'Match your resume\'s keywords to the job description, quantify results ("increased X by Y%") instead of just listing duties, keep it to 1-2 pages in a simple format that passes applicant tracking systems (ATS), and make sure the posting\'s required skills show up clearly. One slightly counterintuitive tip: only apply to postings that genuinely fit your profile - spray-and-pray applications dilute your energy and usually get a worse response rate than a handful of well-targeted ones.' },
+      { q: 'Do these signals guarantee the posting is fake?', a: '⚠️ No. This is a thermometer, not a crystal ball - the signals and weights come from market research (sources further down) and our own heuristic, not from data about the specific job you\'re checking. It can be wrong in both directions: a real job can trigger several signals, and a ghost job can slip by undetected. Treat the result as a starting point for your own digging, never a final verdict - it\'s always worth confirming through the practical steps beside this before writing off a posting.' },
       { q: 'Is it worth applying even in the "gray zone"?', a: 'Usually yes, if the application is quick. The cost of applying is low compared to the cost of skipping a real job. Just avoid spending hours customizing a resume and cover letter for a posting with lots of warning signs.' },
-      { q: 'Is the job description and information I share here saved anywhere?', a: 'No. All analysis runs locally in your browser — neither the pasted text nor the answers you fill in are ever sent to a server. The only thing recorded anonymously is through Umami (a privacy-focused, cookie-free analytics tool): aggregate events like which verdict came up, which language was selected, or which page was visited. We keep that only to understand which parts of the app get used and improve it — never to identify you or see the content of the job you analyzed.' },
-      { q: 'Who is Jon Suguiyama?', a: 'I started my career in web development in 2007 — HTML, CSS, and a lot of ActionScript, building the kind of "16kb miracle" animated banners that today feel like an early lesson in constraint-driven engineering. Then I spent over a decade leading creative teams instead — Senior Art Director, Head of Design, Concept Artist — working on national ad campaigns, esports animation, and a video game built from scratch inside a fast-moving startup, never fully stepping away from code. Today I\'m back where I started: full-stack with Angular, React, TypeScript, and Node.js — recent projects include a drag-and-drop task manager with a live demo system (token-based sessions, PostgreSQL), a CSV-to-dashboard tool (React, Recharts), and this ghost job detector. I\'m also deepening my backend skills — Java, Spring Boot, cloud infrastructure — through a postgraduate program in Software Architecture. What I bring that\'s a little different: I\'ve sat in the client meeting, the pitch room, and the production pipeline, not just the codebase — I know how to translate a business problem into something people actually want to use. Currently looking for full-stack developer opportunities. <a href="https://github.com/jonsuguiyama" target="_blank" rel="noopener noreferrer">GitHub</a> · <a href="https://behance.net/jonsuguiyama" target="_blank" rel="noopener noreferrer">Behance</a>' }
+      { q: 'Is the job description and information I share here saved anywhere?', a: 'No. All analysis runs locally in your browser - neither the pasted text nor the answers you fill in are ever sent to a server. The only thing recorded anonymously is through Umami (a privacy-focused, cookie-free analytics tool): aggregate events like which verdict came up, which language was selected, or which page was visited. We keep that only to understand which parts of the app get used and improve it - never to identify you or see the content of the job you analyzed.' },
+      { q: 'Who is Jon Suguiyama?', a: 'I started my career in web development in 2007 - HTML, CSS, and a lot of ActionScript, building the kind of "16kb miracle" animated banners that today feel like an early lesson in constraint-driven engineering. Then I spent over a decade leading creative teams instead - Senior Art Director, Head of Design, Concept Artist - working on national ad campaigns, esports animation, and a video game built from scratch inside a fast-moving startup, never fully stepping away from code. Today I\'m back where I started: full-stack with Angular, React, TypeScript, and Node.js - recent projects include a drag-and-drop task manager with a live demo system (token-based sessions, PostgreSQL), a CSV-to-dashboard tool (React, Recharts), and this ghost job detector. I\'m also deepening my backend skills - Java, Spring Boot, cloud infrastructure - through a postgraduate program in Software Architecture. What I bring that\'s a little different: I\'ve sat in the client meeting, the pitch room, and the production pipeline, not just the codebase - I know how to translate a business problem into something people actually want to use. Currently looking for full-stack developer opportunities. <a href="https://github.com/jonsuguiyama" target="_blank" rel="noopener noreferrer">GitHub</a> · <a href="https://behance.net/jonsuguiyama" target="_blank" rel="noopener noreferrer">Behance</a>' }
     ],
     sourcesTitle: 'sources',
     sources: [
-      { name: 'Clarify Capital — Ghost Jobs 2.0 (2025)', url: 'https://clarifycapital.com/ghost-jobs' },
-      { name: 'Clarify Capital — 2026 analysis', url: 'https://clarifycapital.com/ghost-jobs-2026' },
-      { name: 'Fast Company — recruiters on ghost jobs (2025)', url: 'https://www.fastcompany.com/91425252/recruiters-dish-on-ghost-jobs-why-companies-post-them-and-how-to-outsmart-them' },
-      { name: 'Entrepreneur — coverage of the Greenhouse study (2025)', url: 'https://www.entrepreneur.com/business-news/one-quarter-of-jobs-posted-online-are-fake-ghost-jobs-study/496683' },
-      { name: 'The Interview Guys — Ghost Jobs Exposed', url: 'https://blog.theinterviewguys.com/ghost-jobs-exposed/' },
-      { name: 'The Interview Guys — 2025 Ghosting Index', url: 'https://blog.theinterviewguys.com/the-2025-ghosting-index/' },
-      { name: 'LiveCareer — HR admits to posting ghost jobs', url: 'https://www.livecareer.com/resources/careers/ghost-jobs' },
-      { name: 'Congressional Research Service — "Ghost" Job Postings', url: 'https://www.congress.gov/crs-product/IF12977' }
+      { name: 'Clarify Capital - Ghost Jobs 2.0 (2025)', url: 'https://clarifycapital.com/ghost-jobs' },
+      { name: 'Clarify Capital - 2026 analysis', url: 'https://clarifycapital.com/ghost-jobs-2026' },
+      { name: 'Fast Company - recruiters on ghost jobs (2025)', url: 'https://www.fastcompany.com/91425252/recruiters-dish-on-ghost-jobs-why-companies-post-them-and-how-to-outsmart-them' },
+      { name: 'Entrepreneur - coverage of the Greenhouse study (2025)', url: 'https://www.entrepreneur.com/business-news/one-quarter-of-jobs-posted-online-are-fake-ghost-jobs-study/496683' },
+      { name: 'The Interview Guys - Ghost Jobs Exposed', url: 'https://blog.theinterviewguys.com/ghost-jobs-exposed/' },
+      { name: 'The Interview Guys - 2025 Ghosting Index', url: 'https://blog.theinterviewguys.com/the-2025-ghosting-index/' },
+      { name: 'LiveCareer - HR admits to posting ghost jobs', url: 'https://www.livecareer.com/resources/careers/ghost-jobs' },
+      { name: 'Congressional Research Service - "Ghost" Job Postings', url: 'https://www.congress.gov/crs-product/IF12977' }
     ],
     quotes: [
       { text: 'Nearly 1 in 3 employers kept job postings active for more than 30 days in 2025.', source: 'Clarify Capital, 2025' },
@@ -231,12 +232,12 @@ export const translations = {
     },
     checklistPage: {
       title: 'Checklist Manual',
-      sub: 'Marca lo que aplica a la vacante que estás analizando. Nada aquí está 100% garantizado — pero cuanto mayor el riesgo de "vacante fantasma", menos vale la pena invertir tiempo en esa postulación.',
+      sub: 'Marca lo que aplica a la vacante que estás analizando. Nada aquí está 100% garantizado - pero cuanto mayor el riesgo de "vacante fantasma", menos vale la pena invertir tiempo en esa postulación.',
       sectionSignals: 'señales de alerta'
     },
     analysisPage: {
       title: 'Análisis Automático',
-      sub: 'Pega el texto completo de la vacante y responde los campos obligatorios — detectamos algunas señales automáticamente en el texto y calculamos el resultado con el resto.'
+      sub: 'Pega el texto completo de la vacante y responde los campos obligatorios - detectamos algunas señales automáticamente en el texto y calculamos el resultado con el resto.'
     },
     weightLabel: 'peso',
     resetLabel: 'reiniciar',
@@ -266,7 +267,7 @@ export const translations = {
       backLabel: '‹ atrás',
       nextLabel: 'Siguiente →',
       progressTemplate: (n) => `pregunta ${n} / 7`,
-      doneMessage: 'Análisis completo — el resultado está actualizado en el medidor.',
+      doneMessage: 'Análisis completo - el resultado está actualizado en el medidor.',
       restartQuestions: 'responder de nuevo',
       incomplete: { label: 'esperando datos', verdict: 'Completa los campos obligatorios', status: 'neutral', detail: 'Pega el texto de la vacante y responde los campos marcados con * para ver el resultado.' },
       autoSalaryAbsent: '🔎 Auto-detectado: no se encontró rango salarial en el texto',
@@ -282,31 +283,31 @@ export const translations = {
     steps: [
       { lead: 'Revisa la página de carreras de la empresa.', rest: 'Si la vacante solo existe en LinkedIn/Indeed pero no en el sitio oficial, desconfía.' },
       { lead: 'Busca la insignia "contratando activamente"', rest: 'en LinkedIn, o publicaciones recientes de empleados mencionando el puesto.' },
-      { lead: 'Contacta directamente a alguien del equipo', rest: '(reclutador o manager) en vez de solo postularte por el formulario — pregunta si la posición sigue activa.' },
+      { lead: 'Contacta directamente a alguien del equipo', rest: '(reclutador o manager) en vez de solo postularte por el formulario - pregunta si la posición sigue activa.' },
       { lead: 'Compara la fecha de publicación con la de última actualización.', rest: 'Una vacante abierta hace 45+ días que se "actualiza" sola sugiere un script automático manteniendo vivo el pipeline, no una contratación real.' },
       { lead: 'Busca el nombre de la empresa + "despidos".', rest: 'Si la empresa recortó personal recientemente en el mismo equipo, la vacante podría ser solo una formalidad.' },
       { lead: 'Pega el título exacto de la vacante + el nombre de la empresa entre comillas en Google.', rest: 'Si la misma vacante aparece publicada en fechas muy distintas a lo largo de los meses, es una señal fuerte de que es evergreen.' }
     ],
     faqTitle: 'FAQ',
     faq: [
-      { q: '¿Cómo puedo ayudar?', a: 'Comparte esta app con quien esté en medio de una búsqueda de trabajo — cuanta más gente sepa reconocer una vacante fantasma, menos tiempo y energía perdemos todos en este juego. Y la jugada más poderosa de todas: ¿conoces a alguien desempleado? ¿Conoces a alguien contratando? Conéctalos. Eso vale mucho más que cualquier vacante publicada — un currículum a veces se traba en el ATS, pero una recomendación de confianza salta la fila. En este mercado medio bizarro de vacantes fantasma, la única forma de salir adelante es no soltarnos la mano.' },
-      { q: 'Soy reclutador(a) y tengo más sugerencias — ¿cómo contribuyo?', a: `Abre un <a href="${GITHUB_REPO_URL}/issues" target="_blank" rel="noopener noreferrer">issue en GitHub</a> con tu sugerencia. Los comentarios de quienes están del lado de la contratación son especialmente bienvenidos.` },
-      { q: '¿Cómo debería optimizar mi currículum para mejorar mis chances?', a: 'Ajusta las palabras clave de tu currículum a las de la descripción de la vacante, cuantifica resultados ("aumenté X en Y%") en vez de solo listar tareas, mantenlo en 1-2 páginas con un formato simple que pase los sistemas de seguimiento de candidatos (ATS), y asegúrate de que las habilidades requeridas de la vacante aparezcan claramente. Un consejo medio contraintuitivo: postúlate solo a vacantes que realmente encajen con tu perfil — postularse a todo ("spray and pray") diluye tu energía y suele tener peor tasa de respuesta que pocas postulaciones bien dirigidas.' },
-      { q: '¿Estas señales garantizan que la vacante es falsa?', a: '⚠️ No. Esto es un termómetro, no una bola de cristal — las señales y los pesos vienen de investigaciones de mercado (fuentes más abajo) y de una heurística propia, no de datos sobre la vacante específica que estás revisando. Puede fallar en ambos sentidos: una vacante real puede activar varias señales, y una vacante fantasma puede pasar desapercibida. Trata el resultado como un punto de partida para investigar, nunca como un veredicto final — siempre vale la pena confirmar con los pasos prácticos al lado antes de descartar una vacante.' },
+      { q: '¿Cómo puedo ayudar?', a: 'Comparte esta app con quien esté en medio de una búsqueda de trabajo - cuanta más gente sepa reconocer una vacante fantasma, menos tiempo y energía perdemos todos en este juego. Y la jugada más poderosa de todas: ¿conoces a alguien desempleado? ¿Conoces a alguien contratando? Conéctalos. Eso vale mucho más que cualquier vacante publicada - un currículum a veces se traba en el ATS, pero una recomendación de confianza salta la fila. En este mercado medio bizarro de vacantes fantasma, la única forma de salir adelante es no soltarnos la mano.' },
+      { q: 'Soy reclutador(a) y tengo más sugerencias - ¿cómo contribuyo?', a: `Abre un <a href="${GITHUB_REPO_URL}/issues" target="_blank" rel="noopener noreferrer">issue en GitHub</a> con tu sugerencia. Los comentarios de quienes están del lado de la contratación son especialmente bienvenidos.` },
+      { q: '¿Cómo debería optimizar mi currículum para mejorar mis chances?', a: 'Ajusta las palabras clave de tu currículum a las de la descripción de la vacante, cuantifica resultados ("aumenté X en Y%") en vez de solo listar tareas, mantenlo en 1-2 páginas con un formato simple que pase los sistemas de seguimiento de candidatos (ATS), y asegúrate de que las habilidades requeridas de la vacante aparezcan claramente. Un consejo medio contraintuitivo: postúlate solo a vacantes que realmente encajen con tu perfil - postularse a todo ("spray and pray") diluye tu energía y suele tener peor tasa de respuesta que pocas postulaciones bien dirigidas.' },
+      { q: '¿Estas señales garantizan que la vacante es falsa?', a: '⚠️ No. Esto es un termómetro, no una bola de cristal - las señales y los pesos vienen de investigaciones de mercado (fuentes más abajo) y de una heurística propia, no de datos sobre la vacante específica que estás revisando. Puede fallar en ambos sentidos: una vacante real puede activar varias señales, y una vacante fantasma puede pasar desapercibida. Trata el resultado como un punto de partida para investigar, nunca como un veredicto final - siempre vale la pena confirmar con los pasos prácticos al lado antes de descartar una vacante.' },
       { q: '¿Vale la pena postularse aunque esté en la "zona gris"?', a: 'Generalmente sí, si la postulación es rápida. El costo de postularse es bajo comparado con el de ignorar una vacante real. Solo evita gastar horas personalizando currículum y carta para una vacante con muchas señales de alerta.' },
-      { q: '¿La descripción de la vacante y la información que comparto aquí se guardan en algún lugar?', a: 'No. Todo el análisis corre localmente en tu navegador — ni el texto pegado ni las respuestas que completas se envían a ningún servidor. Lo único que se registra de forma anónima es a través de Umami (una herramienta de analytics enfocada en privacidad, sin cookies): eventos agregados como qué veredicto apareció, qué idioma se seleccionó o qué página se visitó. Guardamos eso solo para entender qué partes de la app se usan más y mejorarla — nunca para identificarte o ver el contenido de la vacante que analizaste.' },
-      { q: '¿Quién es Jon Suguiyama?', a: 'Empecé mi carrera en desarrollo web en 2007 — HTML, CSS y mucho ActionScript, construyendo esos banners animados "milagro de 16kb" que hoy parecen una lección temprana de ingeniería bajo restricción. Después pasé más de una década liderando equipos creativos — Senior Art Director, Head of Design, Concept Artist — en campañas publicitarias nacionales, animación para el mercado de esports y un videojuego construido desde cero dentro de una startup acelerada, sin dejar nunca de programar del todo. Hoy volví a donde empecé: full-stack con Angular, React, TypeScript y Node.js — proyectos recientes incluyen un gestor de tareas drag-and-drop con sistema de demo en vivo (sesiones por token, PostgreSQL), una herramienta de CSV a dashboard (React, Recharts) y este detector de vacantes fantasma. También estoy profundizando en backend — Java, Spring Boot, infraestructura cloud — con un posgrado en Arquitectura de Software. Lo que aporto de diferente: me he sentado en la reunión con el cliente, en la sala de pitch y en el pipeline de producción, no solo en el código — sé traducir un problema de negocio en algo que la gente realmente quiere usar. Buscando oportunidades como desarrollador(a) full-stack. <a href="https://github.com/jonsuguiyama" target="_blank" rel="noopener noreferrer">GitHub</a> · <a href="https://behance.net/jonsuguiyama" target="_blank" rel="noopener noreferrer">Behance</a>' }
+      { q: '¿La descripción de la vacante y la información que comparto aquí se guardan en algún lugar?', a: 'No. Todo el análisis corre localmente en tu navegador - ni el texto pegado ni las respuestas que completas se envían a ningún servidor. Lo único que se registra de forma anónima es a través de Umami (una herramienta de analytics enfocada en privacidad, sin cookies): eventos agregados como qué veredicto apareció, qué idioma se seleccionó o qué página se visitó. Guardamos eso solo para entender qué partes de la app se usan más y mejorarla - nunca para identificarte o ver el contenido de la vacante que analizaste.' },
+      { q: '¿Quién es Jon Suguiyama?', a: 'Empecé mi carrera en desarrollo web en 2007 - HTML, CSS y mucho ActionScript, construyendo esos banners animados "milagro de 16kb" que hoy parecen una lección temprana de ingeniería bajo restricción. Después pasé más de una década liderando equipos creativos - Senior Art Director, Head of Design, Concept Artist - en campañas publicitarias nacionales, animación para el mercado de esports y un videojuego construido desde cero dentro de una startup acelerada, sin dejar nunca de programar del todo. Hoy volví a donde empecé: full-stack con Angular, React, TypeScript y Node.js - proyectos recientes incluyen un gestor de tareas drag-and-drop con sistema de demo en vivo (sesiones por token, PostgreSQL), una herramienta de CSV a dashboard (React, Recharts) y este detector de vacantes fantasma. También estoy profundizando en backend - Java, Spring Boot, infraestructura cloud - con un posgrado en Arquitectura de Software. Lo que aporto de diferente: me he sentado en la reunión con el cliente, en la sala de pitch y en el pipeline de producción, no solo en el código - sé traducir un problema de negocio en algo que la gente realmente quiere usar. Buscando oportunidades como desarrollador(a) full-stack. <a href="https://github.com/jonsuguiyama" target="_blank" rel="noopener noreferrer">GitHub</a> · <a href="https://behance.net/jonsuguiyama" target="_blank" rel="noopener noreferrer">Behance</a>' }
     ],
     sourcesTitle: 'fuentes',
     sources: [
-      { name: 'Clarify Capital — Ghost Jobs 2.0 (2025)', url: 'https://clarifycapital.com/ghost-jobs' },
-      { name: 'Clarify Capital — análisis 2026', url: 'https://clarifycapital.com/ghost-jobs-2026' },
-      { name: 'Fast Company — reclutadores sobre vacantes fantasma (2025)', url: 'https://www.fastcompany.com/91425252/recruiters-dish-on-ghost-jobs-why-companies-post-them-and-how-to-outsmart-them' },
-      { name: 'Entrepreneur — cobertura del estudio de Greenhouse (2025)', url: 'https://www.entrepreneur.com/business-news/one-quarter-of-jobs-posted-online-are-fake-ghost-jobs-study/496683' },
-      { name: 'The Interview Guys — Ghost Jobs Exposed', url: 'https://blog.theinterviewguys.com/ghost-jobs-exposed/' },
-      { name: 'The Interview Guys — 2025 Ghosting Index', url: 'https://blog.theinterviewguys.com/the-2025-ghosting-index/' },
-      { name: 'LiveCareer — RR.HH. admite publicar vacantes fantasma', url: 'https://www.livecareer.com/resources/careers/ghost-jobs' },
-      { name: 'Congressional Research Service — "Ghost" Job Postings', url: 'https://www.congress.gov/crs-product/IF12977' }
+      { name: 'Clarify Capital - Ghost Jobs 2.0 (2025)', url: 'https://clarifycapital.com/ghost-jobs' },
+      { name: 'Clarify Capital - análisis 2026', url: 'https://clarifycapital.com/ghost-jobs-2026' },
+      { name: 'Fast Company - reclutadores sobre vacantes fantasma (2025)', url: 'https://www.fastcompany.com/91425252/recruiters-dish-on-ghost-jobs-why-companies-post-them-and-how-to-outsmart-them' },
+      { name: 'Entrepreneur - cobertura del estudio de Greenhouse (2025)', url: 'https://www.entrepreneur.com/business-news/one-quarter-of-jobs-posted-online-are-fake-ghost-jobs-study/496683' },
+      { name: 'The Interview Guys - Ghost Jobs Exposed', url: 'https://blog.theinterviewguys.com/ghost-jobs-exposed/' },
+      { name: 'The Interview Guys - 2025 Ghosting Index', url: 'https://blog.theinterviewguys.com/the-2025-ghosting-index/' },
+      { name: 'LiveCareer - RR.HH. admite publicar vacantes fantasma', url: 'https://www.livecareer.com/resources/careers/ghost-jobs' },
+      { name: 'Congressional Research Service - "Ghost" Job Postings', url: 'https://www.congress.gov/crs-product/IF12977' }
     ],
     quotes: [
       { text: 'Casi 1 de cada 3 empleadores mantuvo vacantes activas por más de 30 días en 2025.', source: 'Clarify Capital, 2025' },

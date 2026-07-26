@@ -43,7 +43,7 @@ export default function Ghostometer({
   return (
     <div className="gauge-card">
       <div className="gauge-wrap">
-        <svg width="260" height="154" viewBox="0 0 200 120">
+        <svg width="320" height="190" viewBox="0 0 200 120">
           <defs>
             <linearGradient id="arcGrad" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" stopColor="var(--status-good)" />
