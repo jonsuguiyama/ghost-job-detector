@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="pt-BR" id="htmlRoot">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ghost Job Detector — a vaga existe de verdade?</title>
+<meta name="description" content="Checklist e analisador de texto pra avaliar se uma vaga de emprego é real ou fantasma, com fontes e passos práticos de verificação.">
+<meta property="og:title" content="Ghost Job Detector">
+<meta property="og:description" content="Checklist e analisador de texto pra avaliar se uma vaga de emprego é real ou fantasma.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#1B1420">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👻</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- Analytics: replace YOUR-UMAMI-WEBSITE-ID with the ID from cloud.umami.is once the site is created -->
+<script defer src="https://cloud.umami.is/script.js" data-website-id="YOUR-UMAMI-WEBSITE-ID"></script>
+<style>
+:root{
+  --bg: #1B1420;
+  --bg-2: #150F1A;
+  --panel: #241A2C;
+  --panel-2: #2E2136;
+  --line: #3E2E48;
+  --text: #EDE6E0;
+  --muted: #A895A8;
+  --signal: #4FD1C5;
+  --ghost: #F2A65A;
+  --danger: #E8637A;
+  --focus: #8AB4FF;
+}
+
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:
+    radial-gradient(1100px 500px at 15% -10%, rgba(79,209,197,0.08), transparent 60%),
+    radial-gradient(900px 500px at 100% 0%, rgba(232,99,122,0.07), transparent 55%),
+    var(--bg);
+  color: var(--text);
+  font-family: 'Space Grotesk', sans-serif;
+  padding: 32px 20px 60px;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+a{ color: var(--signal); }
+a:focus-visible, button:focus-visible, .item:focus-visible, textarea:focus-visible, input:focus-visible{
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.wrap{max-width: 760px; margin: 0 auto;}
+
+.topbar{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.eyebrow{
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--signal);
+  margin: 0 0 8px;
+}
+
+.lang-switch{
+  display:flex;
+  gap: 4px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 3px;
+  flex: none;
+}
+.lang-btn{
+  font-family:'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  background: transparent;
+  color: var(--muted);
+  border: none;
+  border-radius: 999px;
+  padding: 6px 11px;
+  cursor: pointer;
+  transition: background .15s, color .15s;
+}
+.lang-btn:hover{ color: var(--text); }
+.lang-btn.active{ background: var(--panel-2); color: var(--signal); }
+
+.sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+
+fieldset.lang-switch{ min-width: 0; }
+
+.intro-card{
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 16px 18px;
+  margin-bottom: 22px;
+}
+.intro-card p{ font-size: 13.5px; color: var(--muted); line-height: 1.55; margin: 0; }
+
+.disclaimer-card{
+  background: rgba(242,166,90,0.08);
+  border: 1px solid var(--ghost);
+  border-radius: 14px;
+  padding: 14px 18px;
+  margin-bottom: 22px;
+}
+.disclaimer-card p{ font-size: 13px; color: var(--text); line-height: 1.5; margin: 0; }
+
+/* FAQ accordion */
+.faq-list{ display:flex; flex-direction:column; gap: 8px; }
+.faq-item{
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.faq-item summary{
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+.faq-item summary::-webkit-details-marker{ display:none; }
+.faq-item summary::after{
+  content: "+";
+  font-family: 'IBM Plex Mono', monospace;
+  color: var(--muted);
+  flex: none;
+  transition: transform .15s;
+}
+.faq-item[open] summary::after{ transform: rotate(45deg); }
+.faq-item[open] summary{ border-bottom: 1px solid var(--line); }
+.faq-answer{
+  padding: 14px 16px 16px;
+  font-size: 13.5px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+.faq-answer a{ color: var(--signal); }
+
+h1{
+  font-size: 30px;
+  line-height: 1.15;
+  margin: 0 0 6px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.sub{
+  color: var(--muted);
+  font-size: 14.5px;
+  margin: 0 0 22px;
+  max-width: 56ch;
+}
+
+/* Mode switch */
+.mode-switch{
+  display:flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+.mode-btn{
+  font-family:'IBM Plex Mono', monospace;
+  font-size: 12.5px;
+  background: var(--panel);
+  color: var(--muted);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px 16px;
+  cursor: pointer;
+  flex: 1;
+  transition: border-color .15s, color .15s, background .15s;
+}
+.mode-btn:hover{ color: var(--text); }
+.mode-btn.active{ border-color: var(--signal); color: var(--signal); background: var(--panel-2); }
+
+/* Radar gauge */
+.gauge-card{
+  background: linear-gradient(180deg, var(--panel), var(--panel) 60%, var(--panel-2));
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 28px 24px 22px;
+  margin-bottom: 24px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 40px -24px rgba(0,0,0,0.6);
+}
+
+.gauge-wrap{ display:flex; flex-direction:column; align-items:center; }
+
+.gauge-ticks{
+  display:flex;
+  justify-content:space-between;
+  width: 220px;
+  margin-top: -6px;
+  font-family:'IBM Plex Mono', monospace;
+  font-size: 10px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.gauge-label{
+  font-family:'IBM Plex Mono', monospace;
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+
+.verdict{
+  font-size: 21px;
+  font-weight: 700;
+  margin-top: 10px;
+  transition: color .3s;
+  text-align: center;
+}
+
+.verdict-detail{
+  font-size: 13.5px;
+  color: var(--muted);
+  text-align: center;
+  margin-top: 4px;
+  max-width: 46ch;
+}
+
+.score-badge{
+  font-family:'IBM Plex Mono', monospace;
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+  padding: 5px 12px;
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+
+.needle{ transform-origin: 100px 105px; transition: transform .5s cubic-bezier(.4,1.4,.4,1); }
+
+/* Section titles */
+.section-title{
+  font-family:'IBM Plex Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 30px 0 12px;
+  display:flex; align-items:center; gap:10px;
+}
+.section-title::after{
+  content:"";
+  flex:1;
+  height:1px;
+  background: var(--line);
+}
+
+/* Checklist */
+.item{
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 10px;
+  display:flex;
+  gap: 14px;
+  align-items:flex-start;
+  cursor: pointer;
+  transition: border-color .15s, background .15s, transform .1s;
+}
+.item:hover{ border-color: var(--ghost); }
+.item:active{ transform: scale(0.995); }
+.item.checked{
+  background: var(--panel-2);
+  border-color: var(--ghost);
+}
+
+.checkbox{
+  width: 20px; height: 20px;
+  border-radius: 6px;
+  border: 1.5px solid var(--muted);
+  flex: none;
+  margin-top: 2px;
+  position: relative;
+  transition: background .15s, border-color .15s;
+}
+.item.checked .checkbox{
+  background: var(--ghost);
+  border-color: var(--ghost);
+}
+.item.checked .checkbox::after{
+  content:"";
+  position:absolute;
+  left: 6px; top: 2px;
+  width: 5px; height: 10px;
+  border: solid #1B1420;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.item-text{ font-size: 14.5px; line-height: 1.4; }
+.item-weight{
+  font-family:'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 3px;
+}
+
+/* Paste form */
+.paste-field{ margin-bottom: 18px; }
+.field-label{
+  display:block;
+  font-size: 13.5px;
+  color: var(--text);
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+.paste-textarea{
+  width: 100%;
+  min-height: 160px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  color: var(--text);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  padding: 14px;
+  resize: vertical;
+  transition: border-color .15s;
+}
+.paste-textarea:focus{ border-color: var(--signal); }
+.paste-number{
+  width: 120px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  color: var(--text);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 14px;
+  padding: 10px 12px;
+}
+.paste-number:focus{ border-color: var(--signal); }
+
+.toggle-group{ display:flex; gap: 8px; flex-wrap: wrap; }
+.toggle-btn{
+  font-family:'IBM Plex Mono', monospace;
+  font-size: 12.5px;
+  background: var(--panel);
+  color: var(--muted);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: border-color .15s, color .15s, background .15s;
+}
+.toggle-btn:hover{ color: var(--text); }
+.toggle-btn.active{ border-color: var(--ghost); color: var(--ghost); background: var(--panel-2); }
+
+.auto-badge{
+  font-family:'IBM Plex Mono', monospace;
+  font-size: 12px;
+  color: var(--signal);
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 8px 12px;
+  margin-top: 8px;
+  display: inline-block;
+}
+
+.required-note{
+  font-family:'IBM Plex Mono', monospace;
+  font-size: 11.5px;
+  color: var(--muted);
+  margin: 4px 0 20px;
+}
+
+/* Next steps */
+.steps{
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 18px 20px;
+  margin-top: 6px;
+}
+.steps ol{ margin: 0; padding-left: 20px; }
+.steps li{ font-size: 14px; margin-bottom: 10px; line-height: 1.45; color: var(--text); }
+.steps li b{ color: var(--signal); }
+.steps li:last-child{ margin-bottom: 0; }
+
+/* Sources */
+.sources{ display:flex; flex-direction:column; gap: 8px; }
+.source-card{
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px 16px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap: 12px;
+  text-decoration:none;
+  transition: border-color .15s, background .15s;
+}
+.source-card:hover{ border-color: var(--signal); background: var(--panel-2); }
+.source-name{ font-size: 13.5px; color: var(--text); font-weight: 500; }
+.source-desc{ font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+.source-arrow{ font-family:'IBM Plex Mono', monospace; color: var(--signal); flex: none; }
+
+.reset-btn{
+  font-family:'IBM Plex Mono', monospace;
+  font-size: 12px;
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 14px;
+  margin-top: 24px;
+  cursor: pointer;
+  transition: color .15s, border-color .15s;
+}
+.reset-btn:hover{ color: var(--text); border-color: var(--ghost); }
+
+footer{
+  margin-top: 30px;
+  font-size: 12px;
+  color: var(--muted);
+  font-family: 'IBM Plex Mono', monospace;
+  line-height: 1.6;
+}
+.quote-list{ list-style: none; margin: 10px 0 14px; padding: 0; display:flex; flex-direction:column; gap: 8px; }
+.quote-list li{
+  border-left: 2px solid var(--line);
+  padding-left: 10px;
+}
+.quote-list b{ color: var(--text); }
+.footer-disclaimer{ color: var(--muted); }
+
+@media (max-width: 420px){
+  .gauge-ticks{ width: 190px; }
+  h1{ font-size: 25px; }
+  .topbar{ flex-wrap: wrap; }
+  .mode-switch{ flex-direction: column; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <p class="eyebrow" id="txtEyebrow">// checklist de verificação</p>
+    <fieldset class="lang-switch">
+      <legend class="sr-only">Language</legend>
+      <button class="lang-btn" data-lang="pt">PT</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="es">ES</button>
+    </fieldset>
+  </div>
+  <h1 id="txtTitle">Essa vaga existe de verdade?</h1>
+  <p class="sub" id="txtSubtitle">Marque o que se aplica à vaga que você está olhando.</p>
+
+  <div class="intro-card">
+    <p id="txtIntro"></p>
+  </div>
+
+  <div class="disclaimer-card">
+    <p id="txtDisclaimer"></p>
+  </div>
+
+  <div class="mode-switch" role="tablist">
+    <button class="mode-btn active" data-mode="checklist" role="tab" aria-selected="true" id="tabChecklistBtn">Checklist manual</button>
+    <button class="mode-btn" data-mode="paste" role="tab" aria-selected="false" id="tabPasteBtn">Colar vaga</button>
+  </div>
+
+  <div class="gauge-card">
+    <div class="gauge-wrap">
+      <svg width="220" height="130" viewBox="0 0 200 120">
+        <path d="M 15 105 A 85 85 0 0 1 185 105" fill="none" stroke="#3E2E48" stroke-width="14" stroke-linecap="round"/>
+        <defs>
+          <linearGradient id="arcGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#4FD1C5"/>
+            <stop offset="55%" stop-color="#F2A65A"/>
+            <stop offset="100%" stop-color="#E8637A"/>
+          </linearGradient>
+        </defs>
+        <path d="M 15 105 A 85 85 0 0 1 185 105" fill="none" stroke="url(#arcGrad)" stroke-width="14" stroke-linecap="round" opacity="0.9"/>
+        <g class="needle" id="needle" style="transform: rotate(-90deg);">
+          <line x1="100" y1="105" x2="100" y2="30" stroke="#EDE6E0" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="100" cy="105" r="6" fill="#EDE6E0"/>
+        </g>
+      </svg>
+      <div class="gauge-ticks">
+        <span id="txtTickLow">real</span>
+        <span id="txtTickHigh">fantasma</span>
+      </div>
+      <p class="gauge-label" id="gaugeLabel">nenhum sinal marcado</p>
+      <p class="verdict" id="verdict" style="color: var(--signal);">Parece uma vaga real</p>
+      <p class="verdict-detail" id="verdictDetail">Continue marcando o que souber sobre a vaga para refinar o resultado.</p>
+      <p class="score-badge" id="scoreBadge">sinais: 0 / 9 · peso: 0 / 13</p>
+    </div>
+  </div>
+
+  <div id="checklistPanel">
+    <p class="section-title" id="txtSectionSignals">sinais de alerta</p>
+    <div id="checklist"></div>
+  </div>
+
+  <div id="pastePanel" style="display:none;">
+    <p class="section-title" id="txtSectionPaste">colar vaga</p>
+    <div class="paste-field">
+      <label class="field-label" id="lblPasteText" for="pasteText">Cole aqui a descrição completa da vaga *</label>
+      <textarea class="paste-textarea" id="pasteText"></textarea>
+      <div id="autoBadges"></div>
+    </div>
+    <div class="paste-field">
+      <label class="field-label" id="lblDays" for="pasteDays">Há quantos dias a vaga está publicada? *</label>
+      <input class="paste-number" type="number" min="0" id="pasteDays">
+    </div>
+    <div class="paste-field">
+      <p class="field-label" id="lblAggregator">Só aparece em agregador, não no site oficial? *</p>
+      <div class="toggle-group" data-field="aggregator" data-options="yn"></div>
+    </div>
+    <div class="paste-field">
+      <p class="field-label" id="lblForm">Candidatura só por formulário genérico? *</p>
+      <div class="toggle-group" data-field="form" data-options="yn"></div>
+    </div>
+    <div class="paste-field">
+      <p class="field-label" id="lblDuplicate">Várias vagas idênticas ao mesmo tempo? *</p>
+      <div class="toggle-group" data-field="duplicate" data-options="yn"></div>
+    </div>
+    <div class="paste-field">
+      <p class="field-label" id="lblEvergreen">Essa vaga já reapareceu antes?</p>
+      <div class="toggle-group" data-field="evergreen" data-options="ynu"></div>
+    </div>
+    <div class="paste-field">
+      <p class="field-label" id="lblSilence">Aplicou e ficou 2+ semanas sem contato?</p>
+      <div class="toggle-group" data-field="silence" data-options="ynu"></div>
+    </div>
+    <div class="paste-field">
+      <p class="field-label" id="lblFreeze">Empresa em freeze de contratação?</p>
+      <div class="toggle-group" data-field="freeze" data-options="ynu"></div>
+    </div>
+    <p class="required-note" id="txtRequiredNote">* campos obrigatórios pra calcular um resultado</p>
+  </div>
+
+  <p class="section-title" id="txtSectionSteps">como confirmar antes de perder tempo</p>
+  <div class="steps">
+    <ol id="stepsList"></ol>
+  </div>
+
+  <p class="section-title" id="txtSectionSources">fontes</p>
+  <div class="sources" id="sourcesList"></div>
+
+  <p class="section-title" id="txtSectionFaq">o que posso fazer pra ajudar?</p>
+  <div class="faq-list" id="faqList"></div>
+
+  <button class="reset-btn" id="resetBtn">reiniciar</button>
+
+  <footer>
+    <ul class="quote-list" id="quoteList"></ul>
+    <p class="footer-disclaimer" id="txtFooterDisclaimer"></p>
+  </footer>
+</div>
+
+<script>
+/* ---------- analytics helper ---------- */
+function track(event, data){
+  if (window.umami) { umami.track(event, data); }
+}
+
+/* ---------- shared content ---------- */
+const itemWeights = [2,1,2,2,2,1,1,1,1];
+const maxWeight = itemWeights.reduce((a,b)=>a+b,0);
+
+const sourcesData = [
+  {
+    url: "https://clarifycapital.com/ghost-jobs",
+    en: { name: "Clarify Capital — Ghost Jobs 2.0 (2025)", desc: "Employer survey on how long postings stay open and why." },
+    pt: { name: "Clarify Capital — Ghost Jobs 2.0 (2025)", desc: "Pesquisa com empregadores sobre tempo de vaga aberta e motivos." },
+    es: { name: "Clarify Capital — Ghost Jobs 2.0 (2025)", desc: "Encuesta a empleadores sobre cuánto tiempo queda abierta una vacante y por qué." }
+  },
+  {
+    url: "https://www.fastcompany.com/91425252/recruiters-dish-on-ghost-jobs-why-companies-post-them-and-how-to-outsmart-them",
+    en: { name: "Fast Company — Recruiters on ghost jobs (2025)", desc: "Recruiters explain pipeline-building and other real motives." },
+    pt: { name: "Fast Company — Recrutadores falam sobre vagas fantasma (2025)", desc: "Recrutadores explicam \"pipeline building\" e outros motivos reais." },
+    es: { name: "Fast Company — Reclutadores sobre vacantes fantasma (2025)", desc: "Reclutadores explican el \"pipeline building\" y otros motivos reales." }
+  },
+  {
+    url: "https://www.entrepreneur.com/business-news/one-quarter-of-jobs-posted-online-are-fake-ghost-jobs-study/496683",
+    en: { name: "Entrepreneur — coverage of the Greenhouse study (2025)", desc: "Industry-wide estimate: 18–22% of active postings are ghost jobs." },
+    pt: { name: "Entrepreneur — cobertura do estudo da Greenhouse (2025)", desc: "Estimativa de mercado: 18–22% das vagas ativas são vagas fantasma." },
+    es: { name: "Entrepreneur — cobertura del estudio de Greenhouse (2025)", desc: "Estimación de mercado: 18–22% de las vacantes activas son fantasma." }
+  },
+  {
+    url: "https://blog.theinterviewguys.com/the-2025-ghosting-index/",
+    en: { name: "The Interview Guys — 2025 Ghosting Index", desc: "Original research on candidate silence after applying." },
+    pt: { name: "The Interview Guys — 2025 Ghosting Index", desc: "Pesquisa original sobre silêncio após a candidatura." },
+    es: { name: "The Interview Guys — 2025 Ghosting Index", desc: "Investigación original sobre el silencio tras postularse." }
+  },
+  {
+    url: "https://www.congress.gov/crs-product/IF12977",
+    en: { name: "Congressional Research Service — \"Ghost\" Job Postings", desc: "Official U.S. government explainer and policy context." },
+    pt: { name: "Congressional Research Service — \"Ghost\" Job Postings", desc: "Explicação oficial do governo dos EUA e contexto regulatório." },
+    es: { name: "Congressional Research Service — \"Ghost\" Job Postings", desc: "Explicación oficial del gobierno de EE.UU. y contexto regulatorio." }
+  }
+];
+
+const genericBuzzwords = [
+  'rockstar','ninja','fast-paced','fast paced','wear many hats','like a family','dynamic environment',
+  'self-starter','hit the ground running','other duties as assigned','competitive salary','great opportunity',
+  'cultura de dono','ambiente dinâmico','múltiplas funções','vestir a camisa','autogerenciável',
+  'proativo e dinâmico','ambiente acelerado','gran oportunidad','cultura dinámica','ritmo acelerado',
+  'como una familia','multitarea','ambiente de rápido crecimiento'
+];
+const salaryKeywords = ['usd','brl','eur','salary','salário','salario','sueldo','faixa salarial','remuneração','remuneracion','pay range','compensation'];
+const salaryCurrencyRegex = /[$€£]\s?\d/;
+const salaryReaisRegex = /r\$\s?\d/i;
+
+function isNumericToken(tok){
+  if (!tok) return false;
+  const value = Number.parseFloat(tok.replace(',', '.'));
+  return !Number.isNaN(value);
+}
+
+function hasThousandNotation(lower){
+  const tokens = lower.split(/\s+/);
+  for (let i = 0; i < tokens.length; i++){
+    const tok = tokens[i];
+    if (tok.endsWith('k') && isNumericToken(tok.slice(0, -1))) return true;
+    if (tok === 'mil' && i > 0 && isNumericToken(tokens[i - 1])) return true;
+  }
+  return false;
+}
+
+function hasSalaryMention(text){
+  const lower = text.toLowerCase();
+  if (salaryCurrencyRegex.test(text)) return true;
+  if (salaryReaisRegex.test(text)) return true;
+  if (hasThousandNotation(lower)) return true;
+  return salaryKeywords.some(k => lower.includes(k));
+}
+
+function analyzeText(text){
+  const lower = text.toLowerCase();
+  const buzzHits = genericBuzzwords.filter(b => lower.includes(b)).length;
+  const isGeneric = buzzHits >= 1 || text.trim().length < 400;
+  const hasContent = text.trim().length > 0;
+  return { salaryAbsent: hasContent && !hasSalaryMention(text), isGeneric: hasContent && isGeneric };
+}
+
+const translations = {
+  pt: {
+    eyebrow: "// checklist de verificação",
+    title: "Essa vaga existe de verdade?",
+    subtitle: "Marque o que se aplica à vaga que você está olhando, ou cole o texto dela na outra aba. Nada aqui garante 100% — mas quanto mais sinais de \"vaga fantasma\" acenderem, menos vale a pena investir tempo nessa candidatura.",
+    tickLow: "real", tickHigh: "fantasma",
+    tabChecklist: "Checklist manual", tabPaste: "Colar vaga",
+    sectionSignals: "sinais de alerta",
+    sectionPaste: "colar vaga",
+    sectionSteps: "como confirmar antes de perder tempo",
+    sectionSources: "fontes",
+    resetBtn: "reiniciar",
+    weightLabel: "peso",
+    scoreBadge: (n,t,w,m) => `sinais: ${n} / ${t} · peso: ${w} / ${m}`,
+    items: [
+      "Publicada há mais de 30–45 dias e continua no ar",
+      "Sem faixa salarial informada",
+      "Descrição genérica/copia-e-cola, sem nome de time, gestor ou stack específica",
+      "Só aparece em agregador (LinkedIn/Indeed/Catho), não na página de carreiras da empresa",
+      "A mesma vaga é reaberta ou reaparece de tempos em tempos (\"evergreen\")",
+      "Zero contato após aplicar, mesmo depois de 2+ semanas",
+      "Empresa em congelamento de contratação ou sem notícia de expansão recente",
+      "Aplicação só por formulário genérico, sem recrutador identificável",
+      "Várias vagas idênticas abertas ao mesmo tempo pra mesma posição"
+    ],
+    steps: [
+      { lead: "Cheque a página de carreiras da empresa.", rest: "Se a vaga só existe no LinkedIn/Indeed/Catho mas não no site oficial, desconfie." },
+      { lead: "Procure o badge \"Contratando ativamente\"", rest: "no LinkedIn, ou posts recentes de funcionários mencionando a vaga." },
+      { lead: "Puxe conversa direto com alguém do time", rest: "(recrutador ou gestor) em vez de só aplicar pelo formulário — pergunte se a posição está ativa." },
+      { lead: "Olhe a data de publicação x última atualização.", rest: "Vaga aberta há 45+ dias sendo \"atualizada\" sozinha sugere um script mantendo o pipeline vivo, não uma contratação real." }
+    ],
+    verdicts: {
+      none:   { label: "nenhum sinal marcado", verdict: "Parece uma vaga real", color: "var(--signal)", detail: "Continue marcando o que souber sobre a vaga para refinar o resultado." },
+      low:    { label: "risco baixo", verdict: "Provavelmente real", color: "var(--signal)", detail: "Poucos sinais de alerta. Vale a pena investir tempo numa candidatura bem feita." },
+      medium: { label: "risco médio", verdict: "Zona cinzenta", color: "var(--ghost)", detail: "Alguns sinais de alerta. Aplique se for rápido, mas priorize confirmar antes via careers page ou contato direto." },
+      high:   { label: "risco alto", verdict: "Provável vaga fantasma", color: "var(--danger)", detail: "Vários sinais bateram. Sua energia provavelmente rende mais em outra vaga ou em contato direto/referral." }
+    },
+    paste: {
+      textLabel: "Cole aqui a descrição completa da vaga *",
+      daysLabel: "Há quantos dias a vaga está publicada? *",
+      aggregatorLabel: "Só aparece em agregador (LinkedIn/Indeed), não no site oficial da empresa? *",
+      formLabel: "Candidatura só por formulário genérico, sem recrutador identificável? *",
+      duplicateLabel: "Existem várias vagas idênticas abertas ao mesmo tempo pra mesma posição? *",
+      evergreenLabel: "Essa vaga já reapareceu antes (\"evergreen\")?",
+      silenceLabel: "Você aplicou e ficou 2+ semanas sem nenhum contato?",
+      freezeLabel: "A empresa está em congelamento de contratação ou sem notícia de expansão?",
+      yes: "Sim", no: "Não", unsure: "Não sei",
+      requiredNote: "* campos obrigatórios pra calcular um resultado",
+      incomplete: { label: "aguardando dados", verdict: "Preencha os campos obrigatórios", color: "var(--muted)", detail: "Cole o texto da vaga e responda os campos marcados com * pra ver o resultado." },
+      autoSalaryAbsent: "🔎 Auto-detectado: nenhuma faixa salarial encontrada no texto",
+      autoSalaryPresent: "🔎 Auto-detectado: faixa salarial mencionada no texto",
+      autoGenericYes: "🔎 Auto-detectado: descrição parece genérica/padrão (aproximado)",
+      autoGenericNo: "🔎 Auto-detectado: descrição parece específica (aproximado)"
+    },
+    footerQuotes: [
+      { text: "Quase 1 em cada 3 empregadores manteve vagas abertas por mais de 30 dias em 2025.", source: "Clarify Capital, 2025" },
+      { text: "37% dos recrutadores dizem manter vagas abertas porque a empresa está \"sempre aberta a novos talentos\".", source: "Fast Company, 2025" },
+      { text: "Estimativas de mercado apontam entre 18% e 27% das vagas publicadas online como \"não acionáveis\".", source: "Greenhouse / Entrepreneur, 2025" }
+    ],
+    footerDisclaimer: "A taxa de vagas fantasma varia bastante por setor, plataforma e país — trate os números acima como ordem de grandeza, não como certeza estatística. Fontes completas na seção acima.",
+    intro: "Por que vaga fantasma existe? Empresas mantêm posições publicadas pra parecer que estão crescendo, montar um banco de currículos pra o futuro (\"pipeline building\"), ou simplesmente porque ninguém lembrou de fechar. Pra quem tá procurando emprego, isso vira tempo e energia jogados fora em processos que nunca vão responder. Esse app existe pra te ajudar a reconhecer os sinais antes de gastar esforço numa candidatura que não vai a lugar nenhum.",
+    disclaimer: "⚠️ Isso aqui é um termômetro, não uma bola de cristal. Os sinais e pesos vêm de pesquisas de mercado (fontes abaixo) e de uma heurística nossa — não de dados da vaga específica que você tá olhando. Pode errar pros dois lados: vaga real pode acender vários sinais, e vaga fantasma pode passar batida. Use o resultado como ponto de partida pra investigar, não como veredito final.",
+    sectionFaq: "o que posso fazer pra ajudar?",
+    faq: [
+      { q: "Como eu posso ajudar?", a: "Divulgue esse app pra quem tá na correria de procurar emprego — quanto mais gente souber reconhecer uma vaga fantasma, menos tempo e energia a gente perde nesse jogo. E o combo mais poderoso de todos: você conhece alguém desempregado? Você conhece alguém contratando? Conecta essas duas pessoas. Isso vale muito mais que qualquer vaga publicada — currículo às vezes empaca no ATS, mas indicação de gente de confiança fura fila. Nesse mercado meio bizarro de vaga fantasma, a gente só sobrevive não largando a mão de ninguém." },
+      { q: "Sou recrutador(a) e tenho mais sugestões — como contribuo?", a: "Abra uma <a href=\"https://github.com/YOUR-USERNAME/ghost-job-detector/issues\" target=\"_blank\" rel=\"noopener noreferrer\">issue no GitHub</a> contando sua sugestão. Feedback de quem tá do lado de dentro do processo de contratação é especialmente bem-vindo." },
+      { q: "Como devo otimizar meu currículo pra aumentar minhas chances?", a: "Adapte as palavras-chave do currículo às da descrição da vaga, quantifique resultados (\"aumentei X em Y%\") em vez de só listar tarefas, mantenha 1-2 páginas num formato simples que passe por sistemas de triagem automática (ATS), e garanta que as competências obrigatórias da vaga apareçam claramente." },
+      { q: "Os sinais aqui garantem que a vaga é falsa?", a: "Não. É uma heurística baseada em padrões comuns, não uma prova. Use o resultado como termômetro de risco, não como veredito final — sempre vale confirmar pelos passos práticos acima antes de descartar uma vaga." },
+      { q: "Vale a pena aplicar mesmo estando na \"zona cinzenta\"?", a: "Geralmente sim, se a candidatura for rápida. O custo de aplicar é baixo comparado ao de ignorar uma vaga real. Só evite gastar horas customizando currículo e carta pra uma vaga com muitos sinais de alerta." },
+      { q: "O texto da vaga que eu colo fica salvo em algum lugar?", a: "Não. Toda a análise roda localmente no seu navegador — nada do texto colado é enviado pra nenhum servidor. O único registro anônimo (via Umami) são eventos agregados, tipo qual veredito apareceu ou qual idioma foi selecionado, nunca o conteúdo da vaga." },
+      { q: "Quem é Jon Suguiyama?", a: "[bio a preencher] — <a href=\"https://linkedin.com/in/YOUR-LINKEDIN\" target=\"_blank\" rel=\"noopener noreferrer\">LinkedIn</a> · <a href=\"https://github.com/YOUR-GITHUB\" target=\"_blank\" rel=\"noopener noreferrer\">GitHub</a>" }
+    ]
+  },
+  en: {
+    eyebrow: "// verification checklist",
+    title: "Is this job posting real?",
+    subtitle: "Check off what applies to the job you're looking at, or paste its text in the other tab. None of this guarantees anything — but the more \"ghost job\" signals light up, the less it's worth investing your time in that application.",
+    tickLow: "real", tickHigh: "ghost",
+    tabChecklist: "Manual checklist", tabPaste: "Paste job posting",
+    sectionSignals: "warning signs",
+    sectionPaste: "paste job posting",
+    sectionSteps: "how to confirm before wasting your time",
+    sectionSources: "sources",
+    resetBtn: "reset",
+    weightLabel: "weight",
+    scoreBadge: (n,t,w,m) => `signals: ${n} / ${t} · weight: ${w} / ${m}`,
+    items: [
+      "Posted 30–45+ days ago and still live",
+      "No salary range listed",
+      "Generic, copy-paste description — no team name, manager, or specific tech stack",
+      "Only appears on an aggregator (LinkedIn/Indeed), not on the company's own careers page",
+      "The same posting keeps reappearing over time (\"evergreen\" listing)",
+      "Total silence after applying, even after 2+ weeks",
+      "Company is in a hiring freeze or has no recent news of growth",
+      "Application only through a generic form, no identifiable recruiter",
+      "Multiple identical openings posted for the same role at the same time"
+    ],
+    steps: [
+      { lead: "Check the company's own careers page.", rest: "If the job only exists on LinkedIn/Indeed but not on the official site, be suspicious." },
+      { lead: "Look for an \"actively hiring\" badge", rest: "on LinkedIn, or recent employee posts mentioning the role." },
+      { lead: "Reach out directly to someone on the team", rest: "(recruiter or manager) instead of just applying through the form — ask if the position is still open." },
+      { lead: "Compare the posting date vs. the last updated date.", rest: "A listing open 45+ days that keeps \"updating\" itself suggests an automated script keeping the pipeline alive, not a real hire." }
+    ],
+    verdicts: {
+      none:   { label: "no signals checked", verdict: "Looks like a real job", color: "var(--signal)", detail: "Keep checking off what you know about the posting to refine the result." },
+      low:    { label: "low risk", verdict: "Likely real", color: "var(--signal)", detail: "Few warning signs. Worth investing time in a solid application." },
+      medium: { label: "medium risk", verdict: "Gray zone", color: "var(--ghost)", detail: "Some warning signs. Apply if it's quick, but prioritize confirming via the careers page or a direct contact." },
+      high:   { label: "high risk", verdict: "Likely a ghost job", color: "var(--danger)", detail: "Multiple signals triggered. Your energy is probably better spent on another posting or a direct referral." }
+    },
+    paste: {
+      textLabel: "Paste the full job description here *",
+      daysLabel: "How many days has it been posted? *",
+      aggregatorLabel: "Only appears on an aggregator (LinkedIn/Indeed), not the company's own site? *",
+      formLabel: "Application only through a generic form, no identifiable recruiter? *",
+      duplicateLabel: "Are there multiple identical openings posted at the same time? *",
+      evergreenLabel: "Has this posting reappeared before (\"evergreen\")?",
+      silenceLabel: "Did you apply and get 2+ weeks of total silence?",
+      freezeLabel: "Is the company in a hiring freeze or with no recent growth news?",
+      yes: "Yes", no: "No", unsure: "Not sure",
+      requiredNote: "* required fields to calculate a result",
+      incomplete: { label: "waiting for input", verdict: "Fill in the required fields", color: "var(--muted)", detail: "Paste the job text and answer the fields marked with * to see a result." },
+      autoSalaryAbsent: "🔎 Auto-detected: no salary range found in the text",
+      autoSalaryPresent: "🔎 Auto-detected: salary range mentioned in the text",
+      autoGenericYes: "🔎 Auto-detected: description looks generic/boilerplate (approximate)",
+      autoGenericNo: "🔎 Auto-detected: description looks specific (approximate)"
+    },
+    footerQuotes: [
+      { text: "Nearly 1 in 3 employers kept job postings active for more than 30 days in 2025.", source: "Clarify Capital, 2025" },
+      { text: "37% of recruiters say they keep postings open because the company is \"always open to new people.\"", source: "Fast Company, 2025" },
+      { text: "Industry estimates put 18–27% of online job postings as \"non-actionable.\"", source: "Greenhouse / Entrepreneur, 2025" }
+    ],
+    footerDisclaimer: "Ghost job rates vary a lot by industry, platform, and country — treat the numbers above as order-of-magnitude, not precise statistics. Full sources in the section above.",
+    intro: "Why do ghost jobs exist? Companies keep postings live to look like they're growing, to build a resume pipeline for later (\"pipeline building\"), or simply because nobody remembered to close it. For job seekers, that turns into time and energy wasted on processes that will never respond. This app exists to help you spot the signs before you invest effort in an application that's going nowhere.",
+    disclaimer: "⚠️ This is a thermometer, not a crystal ball. The signals and weights come from market research (sources below) and our own heuristic — not from data about the specific job you're checking. It can be wrong in both directions: a real job can trigger several signals, and a ghost job can slip by undetected. Treat the result as a starting point for your own digging, not a final verdict.",
+    sectionFaq: "what can I do to help?",
+    faq: [
+      { q: "How can I help?", a: "Share this app with anyone in the middle of a job search — the more people who can spot a ghost job, the less time and energy we all waste on this game. And the single most powerful move of all: do you know someone unemployed? Do you know someone hiring? Connect them. That's worth more than any job posting — a resume can get stuck in an ATS, but a trusted referral skips the line. In this weird ghost-job economy, the way we get through it is by not letting go of each other's hand." },
+      { q: "I'm a recruiter and have more suggestions — how do I contribute?", a: "Open an <a href=\"https://github.com/YOUR-USERNAME/ghost-job-detector/issues\" target=\"_blank\" rel=\"noopener noreferrer\">issue on GitHub</a> with your suggestion. Feedback from people on the hiring side of the process is especially welcome." },
+      { q: "How should I optimize my resume to improve my chances?", a: "Match your resume's keywords to the job description, quantify results (\"increased X by Y%\") instead of just listing duties, keep it to 1-2 pages in a simple format that passes applicant tracking systems (ATS), and make sure the posting's required skills show up clearly." },
+      { q: "Do these signals guarantee the posting is fake?", a: "No. This is a heuristic based on common patterns, not proof. Treat the result as a risk gauge, not a final verdict — it's always worth confirming through the practical steps above before writing off a posting." },
+      { q: "Is it worth applying even in the \"gray zone\"?", a: "Usually yes, if the application is quick. The cost of applying is low compared to the cost of skipping a real job. Just avoid spending hours customizing a resume and cover letter for a posting with lots of warning signs." },
+      { q: "Is the job text I paste saved anywhere?", a: "No. All analysis runs locally in your browser — none of the pasted text is ever sent to a server. The only thing recorded anonymously (via Umami) is aggregate events, like which verdict came up or which language was selected — never the posting's content." },
+      { q: "Who is Jon Suguiyama?", a: "[bio to fill in] — <a href=\"https://linkedin.com/in/YOUR-LINKEDIN\" target=\"_blank\" rel=\"noopener noreferrer\">LinkedIn</a> · <a href=\"https://github.com/YOUR-GITHUB\" target=\"_blank\" rel=\"noopener noreferrer\">GitHub</a>" }
+    ]
+  },
+  es: {
+    eyebrow: "// lista de verificación",
+    title: "¿Esta vacante existe de verdad?",
+    subtitle: "Marca lo que aplica a la vacante que estás viendo, o pega su texto en la otra pestaña. Nada de esto garantiza nada — pero cuantas más señales de \"vacante fantasma\" se enciendan, menos vale la pena invertir tiempo en esa postulación.",
+    tickLow: "real", tickHigh: "fantasma",
+    tabChecklist: "Checklist manual", tabPaste: "Pegar vacante",
+    sectionSignals: "señales de alerta",
+    sectionPaste: "pegar vacante",
+    sectionSteps: "cómo confirmar antes de perder el tiempo",
+    sectionSources: "fuentes",
+    resetBtn: "reiniciar",
+    weightLabel: "peso",
+    scoreBadge: (n,t,w,m) => `señales: ${n} / ${t} · peso: ${w} / ${m}`,
+    items: [
+      "Publicada hace más de 30–45 días y sigue activa",
+      "Sin rango salarial indicado",
+      "Descripción genérica, copiada y pegada, sin nombre del equipo, del manager ni del stack específico",
+      "Solo aparece en un agregador (LinkedIn/Indeed), no en la página de carreras de la empresa",
+      "La misma vacante reaparece cada cierto tiempo (\"evergreen\")",
+      "Silencio total después de aplicar, incluso tras 2+ semanas",
+      "La empresa está en congelamiento de contrataciones o sin noticias recientes de expansión",
+      "Postulación solo por formulario genérico, sin reclutador identificable",
+      "Varias vacantes idénticas publicadas al mismo tiempo para el mismo puesto"
+    ],
+    steps: [
+      { lead: "Revisa la página de carreras de la empresa.", rest: "Si la vacante solo existe en LinkedIn/Indeed pero no en el sitio oficial, desconfía." },
+      { lead: "Busca la insignia \"contratando activamente\"", rest: "en LinkedIn, o publicaciones recientes de empleados mencionando el puesto." },
+      { lead: "Contacta directamente a alguien del equipo", rest: "(reclutador o manager) en vez de solo postularte por el formulario — pregunta si la posición sigue activa." },
+      { lead: "Compara la fecha de publicación con la de última actualización.", rest: "Una vacante abierta hace 45+ días que se \"actualiza\" sola sugiere un script automático manteniendo vivo el pipeline, no una contratación real." }
+    ],
+    verdicts: {
+      none:   { label: "ninguna señal marcada", verdict: "Parece una vacante real", color: "var(--signal)", detail: "Sigue marcando lo que sepas sobre la vacante para refinar el resultado." },
+      low:    { label: "riesgo bajo", verdict: "Probablemente real", color: "var(--signal)", detail: "Pocas señales de alerta. Vale la pena invertir tiempo en una buena postulación." },
+      medium: { label: "riesgo medio", verdict: "Zona gris", color: "var(--ghost)", detail: "Algunas señales de alerta. Aplica si es rápido, pero prioriza confirmar antes vía la página de carreras o un contacto directo." },
+      high:   { label: "riesgo alto", verdict: "Probable vacante fantasma", color: "var(--danger)", detail: "Se activaron varias señales. Tu energía probablemente rinda más en otra vacante o en un contacto directo." }
+    },
+    paste: {
+      textLabel: "Pega aquí la descripción completa de la vacante *",
+      daysLabel: "¿Cuántos días lleva publicada? *",
+      aggregatorLabel: "¿Solo aparece en un agregador (LinkedIn/Indeed), no en el sitio oficial de la empresa? *",
+      formLabel: "¿La postulación es solo por formulario genérico, sin reclutador identificable? *",
+      duplicateLabel: "¿Hay varias vacantes idénticas publicadas al mismo tiempo? *",
+      evergreenLabel: "¿Esta vacante ya reapareció antes (\"evergreen\")?",
+      silenceLabel: "¿Postulaste y tuviste 2+ semanas de silencio total?",
+      freezeLabel: "¿La empresa está en congelamiento de contrataciones o sin noticias de crecimiento?",
+      yes: "Sí", no: "No", unsure: "No sé",
+      requiredNote: "* campos obligatorios para calcular un resultado",
+      incomplete: { label: "esperando datos", verdict: "Completa los campos obligatorios", color: "var(--muted)", detail: "Pega el texto de la vacante y responde los campos marcados con * para ver el resultado." },
+      autoSalaryAbsent: "🔎 Auto-detectado: no se encontró rango salarial en el texto",
+      autoSalaryPresent: "🔎 Auto-detectado: rango salarial mencionado en el texto",
+      autoGenericYes: "🔎 Auto-detectado: la descripción parece genérica/estándar (aproximado)",
+      autoGenericNo: "🔎 Auto-detectado: la descripción parece específica (aproximado)"
+    },
+    footerQuotes: [
+      { text: "Casi 1 de cada 3 empleadores mantuvo vacantes activas por más de 30 días en 2025.", source: "Clarify Capital, 2025" },
+      { text: "37% de los reclutadores dice mantener vacantes abiertas porque la empresa está \"siempre abierta a nuevos talentos.\"", source: "Fast Company, 2025" },
+      { text: "Estimaciones de la industria ubican entre 18% y 27% las vacantes publicadas en línea como \"no accionables\".", source: "Greenhouse / Entrepreneur, 2025" }
+    ],
+    footerDisclaimer: "La tasa de vacantes fantasma varía mucho por sector, plataforma y país — trata los números de arriba como orden de magnitud, no como estadística precisa. Fuentes completas en la sección de arriba.",
+    intro: "¿Por qué existen las vacantes fantasma? Las empresas mantienen publicaciones abiertas para parecer que están creciendo, para armar un banco de currículums para más adelante (\"pipeline building\"), o simplemente porque nadie se acordó de cerrarla. Para quien busca empleo, eso se convierte en tiempo y energía gastados en procesos que nunca van a responder. Esta herramienta existe para ayudarte a detectar las señales antes de invertir esfuerzo en una postulación que no va a ningún lado.",
+    disclaimer: "⚠️ Esto es un termómetro, no una bola de cristal. Las señales y los pesos vienen de investigaciones de mercado (fuentes abajo) y de una heurística propia — no de datos sobre la vacante específica que estás revisando. Puede fallar en ambos sentidos: una vacante real puede activar varias señales, y una vacante fantasma puede pasar desapercibida. Trata el resultado como un punto de partida para investigar, no como un veredicto final.",
+    sectionFaq: "¿qué puedo hacer para ayudar?",
+    faq: [
+      { q: "¿Cómo puedo ayudar?", a: "Comparte esta app con quien esté en medio de una búsqueda de trabajo — cuanta más gente sepa reconocer una vacante fantasma, menos tiempo y energía perdemos todos en este juego. Y la jugada más poderosa de todas: ¿conoces a alguien desempleado? ¿Conoces a alguien contratando? Conéctalos. Eso vale mucho más que cualquier vacante publicada — un currículum a veces se traba en el ATS, pero una recomendación de confianza salta la fila. En este mercado medio bizarro de vacantes fantasma, la única forma de salir adelante es no soltarnos la mano." },
+      { q: "Soy reclutador(a) y tengo más sugerencias — ¿cómo contribuyo?", a: "Abre un <a href=\"https://github.com/YOUR-USERNAME/ghost-job-detector/issues\" target=\"_blank\" rel=\"noopener noreferrer\">issue en GitHub</a> con tu sugerencia. Los comentarios de quienes están del lado de la contratación son especialmente bienvenidos." },
+      { q: "¿Cómo debería optimizar mi currículum para mejorar mis chances?", a: "Ajusta las palabras clave de tu currículum a las de la descripción de la vacante, cuantifica resultados (\"aumenté X en Y%\") en vez de solo listar tareas, mantenlo en 1-2 páginas con un formato simple que pase los sistemas de seguimiento de candidatos (ATS), y asegúrate de que las habilidades requeridas de la vacante aparezcan claramente." },
+      { q: "¿Estas señales garantizan que la vacante es falsa?", a: "No. Es una heurística basada en patrones comunes, no una prueba. Trata el resultado como un termómetro de riesgo, no como un veredicto final — siempre vale la pena confirmar con los pasos prácticos de arriba antes de descartar una vacante." },
+      { q: "¿Vale la pena postularse aunque esté en la \"zona gris\"?", a: "Generalmente sí, si la postulación es rápida. El costo de postularse es bajo comparado con el de ignorar una vacante real. Solo evita gastar horas personalizando currículum y carta para una vacante con muchas señales de alerta." },
+      { q: "¿El texto de la vacante que pego se guarda en algún lugar?", a: "No. Todo el análisis corre localmente en tu navegador — nada del texto pegado se envía a ningún servidor. Lo único que se registra de forma anónima (vía Umami) son eventos agregados, como qué veredicto apareció o qué idioma se seleccionó, nunca el contenido de la vacante." },
+      { q: "¿Quién es Jon Suguiyama?", a: "[bio por completar] — <a href=\"https://linkedin.com/in/YOUR-LINKEDIN\" target=\"_blank\" rel=\"noopener noreferrer\">LinkedIn</a> · <a href=\"https://github.com/YOUR-GITHUB\" target=\"_blank\" rel=\"noopener noreferrer\">GitHub</a>" }
+    ]
+  }
+};
+
+/* ---------- state ---------- */
+let mode = 'checklist';
+const checklistState = new Array(itemWeights.length).fill(false);
+const pasteState = { text:'', days:'', aggregator:null, form:null, duplicate:null, evergreen:null, silence:null, freeze:null };
+let lang = localStorage.getItem('ghostJobLang');
+if (!lang) {
+  const nav = (navigator.language || 'pt').toLowerCase();
+  if (nav.startsWith('es')) lang = 'es';
+  else if (nav.startsWith('pt')) lang = 'pt';
+  else lang = 'en';
+}
+let lastBucket = null;
+
+/* ---------- shared score display ---------- */
+function applyResult(checkedCount, total, weight, max, bucketOverride, verdictInfo, source){
+  const angle = weight === null ? -90 : -90 + (weight / max) * 180;
+  document.getElementById('needle').style.transform = `rotate(${angle}deg)`;
+  document.getElementById('gaugeLabel').textContent = verdictInfo.label;
+  document.getElementById('verdict').textContent = verdictInfo.verdict;
+  document.getElementById('verdict').style.color = verdictInfo.color;
+  document.getElementById('verdictDetail').textContent = verdictInfo.detail;
+  document.getElementById('scoreBadge').textContent = translations[lang].scoreBadge(checkedCount, total, weight === null ? 0 : weight, max);
+
+  const bucketKey = `${source}:${bucketOverride}`;
+  if (bucketKey !== lastBucket){
+    track(`${source}-verdict-change`, { bucket: bucketOverride });
+    lastBucket = bucketKey;
+  }
+}
+
+function bucketFor(ratio){
+  if (ratio < 0.35) return 'low';
+  if (ratio < 0.65) return 'medium';
+  return 'high';
+}
+
+/* ---------- checklist mode ---------- */
+function renderChecklist(){
+  const t = translations[lang];
+  const listEl = document.getElementById('checklist');
+  listEl.innerHTML = '';
+  t.items.forEach((text, idx) => {
+    const div = document.createElement('div');
+    div.className = 'item' + (checklistState[idx] ? ' checked' : '');
+    div.setAttribute('role','checkbox');
+    div.setAttribute('tabindex','0');
+    div.setAttribute('aria-checked', checklistState[idx] ? 'true' : 'false');
+    div.innerHTML = `
+      <div class="checkbox"></div>
+      <div>
+        <div class="item-text">${text}</div>
+        <div class="item-weight">${t.weightLabel} ${itemWeights[idx]}</div>
+      </div>
+    `;
+    const toggle = () => {
+      checklistState[idx] = !checklistState[idx];
+      div.classList.toggle('checked', checklistState[idx]);
+      div.setAttribute('aria-checked', checklistState[idx] ? 'true' : 'false');
+      track('item-toggle', { index: idx, checked: checklistState[idx], weight: itemWeights[idx] });
+      updateChecklistScore();
+    };
+    div.addEventListener('click', toggle);
+    div.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+    });
+    listEl.appendChild(div);
+  });
+  updateChecklistScore();
+}
+
+function updateChecklistScore(){
+  const t = translations[lang];
+  const checkedCount = checklistState.filter(Boolean).length;
+  const weight = itemWeights.reduce((a,w,idx)=> a + (checklistState[idx] ? w : 0), 0);
+  const ratio = weight / maxWeight;
+  const bucket = checkedCount === 0 ? 'none' : bucketFor(ratio);
+  applyResult(checkedCount, itemWeights.length, weight, maxWeight, bucket, t.verdicts[bucket], 'checklist');
+}
+
+/* ---------- paste mode ---------- */
+function renderPaste(){
+  const t = translations[lang];
+  const p = t.paste;
+  document.getElementById('lblPasteText').textContent = p.textLabel;
+  document.getElementById('lblDays').textContent = p.daysLabel;
+  document.getElementById('lblAggregator').textContent = p.aggregatorLabel;
+  document.getElementById('lblForm').textContent = p.formLabel;
+  document.getElementById('lblDuplicate').textContent = p.duplicateLabel;
+  document.getElementById('lblEvergreen').textContent = p.evergreenLabel;
+  document.getElementById('lblSilence').textContent = p.silenceLabel;
+  document.getElementById('lblFreeze').textContent = p.freezeLabel;
+  document.getElementById('txtRequiredNote').textContent = p.requiredNote;
+
+  const pasteTextEl = document.getElementById('pasteText');
+  pasteTextEl.value = pasteState.text;
+  pasteTextEl.oninput = (e) => { pasteState.text = e.target.value; updatePasteScore(); };
+
+  const pasteDaysEl = document.getElementById('pasteDays');
+  pasteDaysEl.value = pasteState.days;
+  pasteDaysEl.oninput = (e) => { pasteState.days = e.target.value; updatePasteScore(); };
+
+  const optionSets = {
+    yn:  [ { v: true, key: 'yes' }, { v: false, key: 'no' } ],
+    ynu: [ { v: true, key: 'yes' }, { v: false, key: 'no' }, { v: null, key: 'unsure' } ]
+  };
+
+  document.querySelectorAll('.toggle-group').forEach(group => {
+    const field = group.dataset.field;
+    const opts = optionSets[group.dataset.options];
+    group.innerHTML = '';
+    opts.forEach(opt => {
+      const btn = document.createElement('button');
+      btn.className = 'toggle-btn' + (pasteState[field] === opt.v ? ' active' : '');
+      btn.textContent = p[opt.key];
+      btn.type = 'button';
+      btn.addEventListener('click', () => {
+        pasteState[field] = opt.v;
+        track('paste-field-set', { field, value: opt.v });
+        renderPaste();
+      });
+      group.appendChild(btn);
+    });
+  });
+
+  updatePasteScore();
+}
+
+function updatePasteScore(){
+  const t = translations[lang];
+  const p = t.paste;
+  const analysis = analyzeText(pasteState.text);
+
+  const badgesEl = document.getElementById('autoBadges');
+  if (pasteState.text.trim().length > 0){
+    badgesEl.innerHTML = `
+      <span class="auto-badge">${analysis.salaryAbsent ? p.autoSalaryAbsent : p.autoSalaryPresent}</span>
+      <span class="auto-badge">${analysis.isGeneric ? p.autoGenericYes : p.autoGenericNo}</span>
+    `;
+  } else {
+    badgesEl.innerHTML = '';
+  }
+
+  const daysNum = Number.parseInt(pasteState.days, 10);
+  const requiredFilled = pasteState.text.trim().length > 0
+    && !Number.isNaN(daysNum)
+    && pasteState.aggregator !== null
+    && pasteState.form !== null
+    && pasteState.duplicate !== null;
+
+  if (!requiredFilled){
+    applyResult(0, itemWeights.length, null, maxWeight, 'incomplete', p.incomplete, 'paste');
+    return;
+  }
+
+  let weight = 0;
+  let checkedCount = 0;
+  const add = (flag, w) => { if (flag) { weight += w; checkedCount += 1; } };
+
+  add(daysNum >= 30, itemWeights[0]);
+  add(analysis.salaryAbsent, itemWeights[1]);
+  add(analysis.isGeneric, itemWeights[2]);
+  add(pasteState.aggregator === true, itemWeights[3]);
+  add(pasteState.evergreen === true, itemWeights[4]);
+  add(pasteState.silence === true, itemWeights[5]);
+  add(pasteState.freeze === true, itemWeights[6]);
+  add(pasteState.form === true, itemWeights[7]);
+  add(pasteState.duplicate === true, itemWeights[8]);
+
+  const ratio = weight / maxWeight;
+  const bucket = checkedCount === 0 ? 'none' : bucketFor(ratio);
+  applyResult(checkedCount, itemWeights.length, weight, maxWeight, bucket, t.verdicts[bucket], 'paste');
+}
+
+/* ---------- shared static text (steps, sources, footer, labels) ---------- */
+function renderStatic(){
+  const t = translations[lang];
+  document.getElementById('htmlRoot').lang = lang === 'pt' ? 'pt-BR' : lang;
+  document.getElementById('txtEyebrow').textContent = t.eyebrow;
+  document.getElementById('txtTitle').textContent = t.title;
+  document.getElementById('txtSubtitle').textContent = t.subtitle;
+  document.getElementById('txtTickLow').textContent = t.tickLow;
+  document.getElementById('txtTickHigh').textContent = t.tickHigh;
+  document.getElementById('txtSectionSignals').textContent = t.sectionSignals;
+  document.getElementById('txtSectionPaste').textContent = t.sectionPaste;
+  document.getElementById('txtSectionSteps').textContent = t.sectionSteps;
+  document.getElementById('txtSectionSources').textContent = t.sectionSources;
+  document.getElementById('txtSectionFaq').textContent = t.sectionFaq;
+  document.getElementById('txtIntro').textContent = t.intro;
+  document.getElementById('txtDisclaimer').textContent = t.disclaimer;
+  document.getElementById('resetBtn').textContent = t.resetBtn;
+  document.getElementById('tabChecklistBtn').textContent = t.tabChecklist;
+  document.getElementById('tabPasteBtn').textContent = t.tabPaste;
+
+  document.querySelectorAll('.lang-btn').forEach(btn=>{
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
+
+  const stepsList = document.getElementById('stepsList');
+  stepsList.innerHTML = '';
+  t.steps.forEach(step => {
+    const li = document.createElement('li');
+    li.innerHTML = `<b>${step.lead}</b> ${step.rest}`;
+    stepsList.appendChild(li);
+  });
+
+  const sourcesList = document.getElementById('sourcesList');
+  sourcesList.innerHTML = '';
+  sourcesData.forEach(src => {
+    const s = src[lang];
+    const a = document.createElement('a');
+    a.className = 'source-card';
+    a.href = src.url;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    a.addEventListener('click', () => track('source-click', { url: src.url }));
+    a.innerHTML = `
+      <div>
+        <div class="source-name">${s.name}</div>
+        <div class="source-desc">${s.desc}</div>
+      </div>
+      <span class="source-arrow">↗</span>
+    `;
+    sourcesList.appendChild(a);
+  });
+
+  const quoteList = document.getElementById('quoteList');
+  quoteList.innerHTML = '';
+  t.footerQuotes.forEach(q => {
+    const li = document.createElement('li');
+    li.innerHTML = `"${q.text}" — <b>${q.source}</b>`;
+    quoteList.appendChild(li);
+  });
+  document.getElementById('txtFooterDisclaimer').textContent = t.footerDisclaimer;
+
+  const faqList = document.getElementById('faqList');
+  faqList.innerHTML = '';
+  t.faq.forEach((item, idx) => {
+    const details = document.createElement('details');
+    details.className = 'faq-item';
+    details.innerHTML = `<summary>${item.q}</summary><div class="faq-answer">${item.a}</div>`;
+    details.addEventListener('toggle', () => {
+      if (details.open) track('faq-open', { index: idx, lang });
+    });
+    faqList.appendChild(details);
+  });
+}
+
+function renderAll(){
+  renderStatic();
+  renderChecklist();
+  renderPaste();
+}
+
+document.querySelectorAll('.lang-btn').forEach(btn=>{
+  btn.addEventListener('click', () => {
+    lang = btn.dataset.lang;
+    localStorage.setItem('ghostJobLang', lang);
+    track('language-switch', { lang });
+    renderAll();
+  });
+});
+
+document.querySelectorAll('.mode-btn').forEach(btn=>{
+  btn.addEventListener('click', () => {
+    mode = btn.dataset.mode;
+    document.querySelectorAll('.mode-btn').forEach(b => {
+      b.classList.toggle('active', b.dataset.mode === mode);
+      b.setAttribute('aria-selected', b.dataset.mode === mode ? 'true' : 'false');
+    });
+    document.getElementById('checklistPanel').style.display = mode === 'checklist' ? 'block' : 'none';
+    document.getElementById('pastePanel').style.display = mode === 'paste' ? 'block' : 'none';
+    track('mode-switch', { mode });
+    if (mode === 'checklist') updateChecklistScore(); else updatePasteScore();
+  });
+});
+
+document.getElementById('resetBtn').addEventListener('click', () => {
+  if (mode === 'checklist'){
+    checklistState.fill(false);
+    track('reset-click', { mode: 'checklist' });
+    renderChecklist();
+  } else {
+    pasteState.text = ''; pasteState.days = '';
+    pasteState.aggregator = null; pasteState.form = null; pasteState.duplicate = null;
+    pasteState.evergreen = null; pasteState.silence = null; pasteState.freeze = null;
+    track('reset-click', { mode: 'paste' });
+    renderPaste();
+  }
+});
+
+renderAll();
+</script>
+</body>
+</html>
