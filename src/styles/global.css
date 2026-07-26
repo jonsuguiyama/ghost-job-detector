@@ -200,7 +200,6 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible, textarea:focus-
 /* ---------- footer ---------- */
 .site-footer{
   border-top: 1px solid var(--line);
-  margin-top: 40px;
   padding: 18px 20px;
   background: var(--page);
 }
@@ -251,13 +250,6 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible, textarea:focus-
   line-height: 1.5;
   margin: 0 0 14px;
   max-width: 48ch;
-}
-.hero-counter{
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 12.5px;
-  color: var(--muted);
-  margin: 0 0 26px;
-  min-height: 1em;
 }
 .hero-ctas{ display: flex; gap: 12px; flex-wrap: wrap; }
 

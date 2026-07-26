@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../i18n/LanguageContext';
 import Ghostometer from '../components/Ghostometer';
-import HeroCounter from '../components/HeroCounter';
 import { track } from '../lib/analytics';
 
 export default function Home() {
@@ -13,7 +12,6 @@ export default function Home() {
         <div>
           <h1>{t.home.title}</h1>
           <p className="hero-sub">{t.home.sub}</p>
-          <HeroCounter />
           <div className="hero-ctas">
             <Link
               to="/checklist"

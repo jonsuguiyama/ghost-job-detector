@@ -6,7 +6,6 @@ export const translations = {
     home: {
       title: 'Essa vaga existe de verdade?',
       sub: 'Aprenda a reconhecer os sinais antes de perder tempo e energia em candidaturas que não vão a lugar nenhum.',
-      counterTemplate: (n) => `${n} pessoas já usaram isso pra reconhecer vaga fantasma.`,
       ctaChecklist: 'Checklist Manual',
       ctaPaste: 'Análise Automática'
     },
@@ -112,7 +111,6 @@ export const translations = {
     home: {
       title: 'Is this job posting real?',
       sub: 'Learn to spot the signs before you waste time and energy on applications that go nowhere.',
-      counterTemplate: (n) => `${n} people have already used this to spot ghost jobs.`,
       ctaChecklist: 'Manual Checklist',
       ctaPaste: 'Automatic Analysis'
     },
@@ -218,7 +216,6 @@ export const translations = {
     home: {
       title: '¿Esta vacante existe de verdad?',
       sub: 'Aprende a reconocer las señales antes de perder tiempo y energía en postulaciones que no van a ningún lado.',
-      counterTemplate: (n) => `${n} personas ya usaron esto para reconocer vacantes fantasma.`,
       ctaChecklist: 'Checklist Manual',
       ctaPaste: 'Análisis Automático'
     },
