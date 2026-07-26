@@ -27,7 +27,7 @@ export const translations = {
       sub: 'Cole o texto completo da vaga e responda os campos obrigatórios - a gente detecta alguns sinais automaticamente no texto e calcula o resultado com o resto.'
     },
     weightLabel: 'peso',
-    resetLabel: 'reiniciar',
+    resetLabel: 'resetar',
     scoreBadge: (n, t, w, m) => `sinais: ${n} / ${t} · peso: ${w} / ${m}`,
     items: [
       'Publicada há mais de 30–45 dias e continua no ar',
@@ -56,7 +56,6 @@ export const translations = {
       nextLabel: 'Avançar →',
       progressTemplate: (n) => `pergunta ${n} / 7`,
       doneMessage: 'Análise completa - o resultado está atualizado no medidor ao lado.',
-      restartQuestions: 'responder de novo',
       incomplete: { label: 'aguardando dados', verdict: 'Preencha os campos obrigatórios', status: 'neutral', detail: 'Cole o texto da vaga e responda os campos marcados com * pra ver o resultado.' },
       autoSalaryAbsent: '🔎 Auto-detectado: nenhuma faixa salarial encontrada no texto',
       autoSalaryPresent: '🔎 Auto-detectado: faixa salarial mencionada no texto',
@@ -163,7 +162,6 @@ export const translations = {
       nextLabel: 'Next →',
       progressTemplate: (n) => `question ${n} / 7`,
       doneMessage: 'Analysis complete - the result is updated on the gauge.',
-      restartQuestions: 'answer again',
       incomplete: { label: 'waiting for input', verdict: 'Fill in the required fields', status: 'neutral', detail: 'Paste the job text and answer the fields marked with * to see a result.' },
       autoSalaryAbsent: '🔎 Auto-detected: no salary range found in the text',
       autoSalaryPresent: '🔎 Auto-detected: salary range mentioned in the text',
@@ -270,7 +268,6 @@ export const translations = {
       nextLabel: 'Siguiente →',
       progressTemplate: (n) => `pregunta ${n} / 7`,
       doneMessage: 'Análisis completo - el resultado está actualizado en el medidor.',
-      restartQuestions: 'responder de nuevo',
       incomplete: { label: 'esperando datos', verdict: 'Completa los campos obligatorios', status: 'neutral', detail: 'Pega el texto de la vacante y responde los campos marcados con * para ver el resultado.' },
       autoSalaryAbsent: '🔎 Auto-detectado: no se encontró rango salarial en el texto',
       autoSalaryPresent: '🔎 Auto-detectado: rango salarial mencionado en el texto',

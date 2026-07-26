@@ -81,7 +81,7 @@ describe('PasteForm - toggle questions (regression: buttons must update state an
   });
 });
 
-describe('PasteForm - reset only appears once the quiz is complete', () => {
+describe('PasteForm - reset is the only control, and only appears at the end', () => {
   it('is absent while questions are still in progress', async () => {
     const user = userEvent.setup();
     renderPasteForm();
@@ -94,7 +94,7 @@ describe('PasteForm - reset only appears once the quiz is complete', () => {
     expect(screen.queryByRole('button', { name: 'reset' })).not.toBeInTheDocument();
   });
 
-  it('appears once all 7 questions are answered, and clears the text', async () => {
+  it('appears once all 7 questions are answered, clears the answers, and keeps the pasted text', async () => {
     const user = userEvent.setup();
     renderPasteForm();
 
@@ -107,10 +107,9 @@ describe('PasteForm - reset only appears once the quiz is complete', () => {
       await user.click(screen.getAllByRole('button', { name: 'Yes' })[0]);
     }
 
-    const resetButton = screen.getByRole('button', { name: 'reset' });
-    expect(screen.getByRole('button', { name: /answer again/ })).toBeInTheDocument();
+    await user.click(screen.getByRole('button', { name: 'reset' }));
 
-    await user.click(resetButton);
-    expect(textarea).toHaveValue('');
+    expect(textarea).toHaveValue('Some job text here.');
+    expect(screen.getByText('question 1 / 7')).toBeInTheDocument();
   });
 });

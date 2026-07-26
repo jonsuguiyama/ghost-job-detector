@@ -223,8 +223,10 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible, textarea:focus-
 
 /* ---------- hero ---------- */
 .hero-section{
-  padding-top: 0;
-  padding-bottom: 0;
+  max-width: 1080px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
   display: flex;
   align-items: center;
 }

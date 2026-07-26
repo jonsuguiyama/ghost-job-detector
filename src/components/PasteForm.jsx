@@ -150,8 +150,9 @@ export default function PasteForm({ onScoreChange }) {
     ? answers.days !== '' && !Number.isNaN(Number.parseInt(answers.days, 10))
     : answers[f] !== undefined);
 
-  const reset = () => {
-    setText(''); setAnswers(initialAnswers); setStep(0);
+  const answerAgain = () => {
+    setAnswers(initialAnswers);
+    setStep(0);
     track('reset-click', { mode: 'paste' });
   };
 
@@ -179,8 +180,7 @@ export default function PasteForm({ onScoreChange }) {
           {allAnswered ? (
             <>
               <p className="required-note" style={{ margin: '0 0 10px' }}>{p.doneMessage}</p>
-              <button type="button" className="toggle-btn" onClick={() => setStep(0)}>{p.restartQuestions}</button>
-              <button type="button" className="reset-btn" onClick={reset}>{t.resetLabel}</button>
+              <button type="button" className="toggle-btn" onClick={answerAgain}>{t.resetLabel}</button>
             </>
           ) : (
             <>

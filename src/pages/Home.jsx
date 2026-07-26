@@ -8,7 +8,7 @@ export default function Home() {
   const { t } = useLanguage();
 
   return (
-    <div className="page-wrap hero-section">
+    <div className="hero-section">
       <div className="hero">
         <div>
           <h1>{t.home.title}</h1>
