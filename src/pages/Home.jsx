@@ -31,7 +31,7 @@ export default function Home() {
         </div>
 
         <div>
-          <Ghostometer mode="auto" quotes />
+          <Ghostometer mode="auto" quotes large />
         </div>
       </div>
     </div>

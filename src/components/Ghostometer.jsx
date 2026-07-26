@@ -21,7 +21,8 @@ export default function Ghostometer({
   ratio = 0,
   verdictInfo,
   scoreBadgeText,
-  quotes = false
+  quotes = false,
+  large = false
 }) {
   const { t } = useLanguage();
   const [autoIndex, setAutoIndex] = useState(0);
@@ -39,11 +40,13 @@ export default function Ghostometer({
   const effectiveVerdict = mode === 'auto' ? t.verdicts[AUTO_SEQUENCE[autoIndex].bucket] : verdictInfo;
   const color = statusVar[effectiveVerdict.status] || statusVar.neutral;
   const angle = -90 + effectiveRatio * 180;
+  const svgWidth = large ? 390 : 320;
+  const svgHeight = large ? 231 : 190;
 
   return (
-    <div className="gauge-card">
+    <div className={`gauge-card${large ? ' gauge-card--lg' : ''}`}>
       <div className="gauge-wrap">
-        <svg width="320" height="190" viewBox="0 0 200 120">
+        <svg width={svgWidth} height={svgHeight} viewBox="0 0 200 120">
           <defs>
             <linearGradient id="arcGrad" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" stopColor="var(--status-good)" />
