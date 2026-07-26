@@ -93,7 +93,11 @@ export const translations = {
       { name: 'The Interview Guys - Ghost Jobs Exposed', url: 'https://blog.theinterviewguys.com/ghost-jobs-exposed/' },
       { name: 'The Interview Guys - 2025 Ghosting Index', url: 'https://blog.theinterviewguys.com/the-2025-ghosting-index/' },
       { name: 'LiveCareer - RH admite publicar vaga fantasma', url: 'https://www.livecareer.com/resources/careers/ghost-jobs' },
-      { name: 'Congressional Research Service - "Ghost" Job Postings', url: 'https://www.congress.gov/crs-product/IF12977' }
+      { name: 'Congressional Research Service - "Ghost" Job Postings', url: 'https://www.congress.gov/crs-product/IF12977' },
+      { name: 'Fast Company Brasil - vagas fantasma prejudicam candidatos e empresas', url: 'https://fastcompanybrasil.com/worklife/vagas-fantasma-estao-prejudicando-candidatos-e-empresas/' },
+      { name: 'G1 - o que são vagas fantasmas e como identificá-las', url: 'https://g1.globo.com/trabalho-e-carreira/noticia/2024/10/31/vagas-fantasmas-o-que-sao-por-que-empresas-utilizam-como-identifica-las.ghtml' },
+      { name: 'BBC News Brasil - reportagem sobre vaga fantasma', url: 'https://www.bbc.com/portuguese/articles/crg4x4rxe91o' },
+      { name: 'Nexo Jornal - por que empresas abrem vagas fantasmas', url: 'https://www.nexojornal.com.br/expresso/2025/09/05/trabalho-processo-seletivo-vagas-fantasmas-estrategia-de-marketing-empresarial' }
     ],
     quotes: [
       { text: 'Quase 1 em cada 3 empregadores manteve vagas abertas por mais de 30 dias em 2025.', source: 'Clarify Capital, 2025' },
@@ -102,6 +106,8 @@ export const translations = {
       { text: '27,4% das vagas nos EUA no LinkedIn são prováveis vagas fantasma.', source: 'ResumeUp.AI, via The Interview Guys' },
       { text: '93% dos profissionais de RH admitem publicar vaga fantasma regularmente ou ocasionalmente.', source: 'LiveCareer, 2025' },
       { text: '1 em cada 7 vagas ativas hoje é uma vaga fantasma.', source: 'Clarify Capital, 2026' },
+      { text: '53% dos candidatos já encontraram vagas fraudulentas ao procurar emprego.', source: 'Job Seeker Nation Report 2026, Employ' },
+      { text: 'Até 2028, 1 em cada 4 perfis de candidatos deve ser falso, segundo previsão da Gartner.', source: 'Gartner, via Fast Company Brasil' },
       { text: '69% dos candidatos ghostados dizem que isso aconteceu depois que o processo de entrevistas já tinha começado.', source: 'LiveCareer, 2025' },
       { text: '40% das empresas de tecnologia já publicaram pelo menos uma vaga fantasma.', source: 'Greenhouse / ResumeBuilder, via The Interview Guys' },
       { text: 'Los Angeles tem a maior taxa de vaga fantasma entre as grandes cidades dos EUA: 30,5%.', source: 'Greenhouse / ResumeBuilder, via The Interview Guys' }
@@ -201,7 +207,11 @@ export const translations = {
       { name: 'The Interview Guys - Ghost Jobs Exposed', url: 'https://blog.theinterviewguys.com/ghost-jobs-exposed/' },
       { name: 'The Interview Guys - 2025 Ghosting Index', url: 'https://blog.theinterviewguys.com/the-2025-ghosting-index/' },
       { name: 'LiveCareer - HR admits to posting ghost jobs', url: 'https://www.livecareer.com/resources/careers/ghost-jobs' },
-      { name: 'Congressional Research Service - "Ghost" Job Postings', url: 'https://www.congress.gov/crs-product/IF12977' }
+      { name: 'Congressional Research Service - "Ghost" Job Postings', url: 'https://www.congress.gov/crs-product/IF12977' },
+      { name: 'Fast Company Brasil - ghost jobs are hurting candidates and companies', url: 'https://fastcompanybrasil.com/worklife/vagas-fantasma-estao-prejudicando-candidatos-e-empresas/' },
+      { name: 'G1 - what ghost jobs are and how to spot them', url: 'https://g1.globo.com/trabalho-e-carreira/noticia/2024/10/31/vagas-fantasmas-o-que-sao-por-que-empresas-utilizam-como-identifica-las.ghtml' },
+      { name: 'BBC News Brasil - report on ghost jobs', url: 'https://www.bbc.com/portuguese/articles/crg4x4rxe91o' },
+      { name: 'Nexo Jornal - why companies open ghost jobs', url: 'https://www.nexojornal.com.br/expresso/2025/09/05/trabalho-processo-seletivo-vagas-fantasmas-estrategia-de-marketing-empresarial' }
     ],
     quotes: [
       { text: 'Nearly 1 in 3 employers kept job postings active for more than 30 days in 2025.', source: 'Clarify Capital, 2025' },
@@ -210,6 +220,8 @@ export const translations = {
       { text: '27.4% of U.S. job listings on LinkedIn are likely ghost jobs.', source: 'ResumeUp.AI, via The Interview Guys' },
       { text: '93% of HR professionals admit to posting ghost jobs regularly or occasionally.', source: 'LiveCareer, 2025' },
       { text: '1 in 7 active job posts today is a ghost job.', source: 'Clarify Capital, 2026' },
+      { text: '53% of job seekers have encountered fraudulent job postings.', source: 'Job Seeker Nation Report 2026, Employ' },
+      { text: 'By 2028, 1 in 4 candidate profiles is expected to be fake, according to Gartner.', source: 'Gartner, via Fast Company Brasil' },
       { text: '69% of ghosted candidates say it happened after the interview process had already started.', source: 'LiveCareer, 2025' },
       { text: '40% of tech companies have posted at least one fake job listing.', source: 'Greenhouse / ResumeBuilder, via The Interview Guys' },
       { text: 'Los Angeles has the highest ghost job rate among major U.S. cities: 30.5%.', source: 'Greenhouse / ResumeBuilder, via The Interview Guys' }
@@ -309,7 +321,11 @@ export const translations = {
       { name: 'The Interview Guys - Ghost Jobs Exposed', url: 'https://blog.theinterviewguys.com/ghost-jobs-exposed/' },
       { name: 'The Interview Guys - 2025 Ghosting Index', url: 'https://blog.theinterviewguys.com/the-2025-ghosting-index/' },
       { name: 'LiveCareer - RR.HH. admite publicar vacantes fantasma', url: 'https://www.livecareer.com/resources/careers/ghost-jobs' },
-      { name: 'Congressional Research Service - "Ghost" Job Postings', url: 'https://www.congress.gov/crs-product/IF12977' }
+      { name: 'Congressional Research Service - "Ghost" Job Postings', url: 'https://www.congress.gov/crs-product/IF12977' },
+      { name: 'Fast Company Brasil - las vacantes fantasma perjudican a candidatos y empresas', url: 'https://fastcompanybrasil.com/worklife/vagas-fantasma-estao-prejudicando-candidatos-e-empresas/' },
+      { name: 'G1 - qué son las vacantes fantasma y cómo identificarlas', url: 'https://g1.globo.com/trabalho-e-carreira/noticia/2024/10/31/vagas-fantasmas-o-que-sao-por-que-empresas-utilizam-como-identifica-las.ghtml' },
+      { name: 'BBC News Brasil - reportaje sobre vacantes fantasma', url: 'https://www.bbc.com/portuguese/articles/crg4x4rxe91o' },
+      { name: 'Nexo Jornal - por qué las empresas abren vacantes fantasma', url: 'https://www.nexojornal.com.br/expresso/2025/09/05/trabalho-processo-seletivo-vagas-fantasmas-estrategia-de-marketing-empresarial' }
     ],
     quotes: [
       { text: 'Casi 1 de cada 3 empleadores mantuvo vacantes activas por más de 30 días en 2025.', source: 'Clarify Capital, 2025' },
@@ -318,6 +334,8 @@ export const translations = {
       { text: '27,4% de las vacantes en EE. UU. en LinkedIn son probables vacantes fantasma.', source: 'ResumeUp.AI, vía The Interview Guys' },
       { text: '93% de los profesionales de RR.HH. admite publicar vacantes fantasma regular u ocasionalmente.', source: 'LiveCareer, 2025' },
       { text: '1 de cada 7 vacantes activas hoy es una vacante fantasma.', source: 'Clarify Capital, 2026' },
+      { text: '53% de quienes buscan empleo ya se encontraron con vacantes fraudulentas.', source: 'Job Seeker Nation Report 2026, Employ' },
+      { text: 'Para 2028, se espera que 1 de cada 4 perfiles de candidatos sea falso, según Gartner.', source: 'Gartner, vía Fast Company Brasil' },
       { text: '69% de los candidatos ghosteados dice que ocurrió después de que el proceso de entrevistas ya había comenzado.', source: 'LiveCareer, 2025' },
       { text: '40% de las empresas de tecnología ya publicó al menos una vacante fantasma.', source: 'Greenhouse / ResumeBuilder, via The Interview Guys' },
       { text: 'Los Ángeles tiene la tasa más alta de vacantes fantasma entre las grandes ciudades de EE. UU.: 30,5%.', source: 'Greenhouse / ResumeBuilder, via The Interview Guys' }
