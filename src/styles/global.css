@@ -44,7 +44,7 @@ body{
   min-height: 100vh;
 }
 
-#root{ min-height: 100vh; display: flex; flex-direction: column; }
+#root{ min-height: 100vh; display: grid; grid-template-rows: auto 1fr auto; }
 
 a{ color: var(--accent); }
 button{ font-family: inherit; }
@@ -361,23 +361,6 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible, textarea:focus-
   .split-left{ position: static; padding-top: 24px; }
 }
 
-/* ---------- mode switch (kept for backward compat inside pages) ---------- */
-.mode-switch{ display: flex; gap: 8px; margin-bottom: 20px; }
-.mode-btn{
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 12.5px;
-  background: var(--surface);
-  color: var(--muted);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-md);
-  padding: 10px 16px;
-  cursor: pointer;
-  flex: 1;
-  transition: border-color .15s, color .15s, background .15s;
-}
-.mode-btn:hover{ color: var(--text); }
-.mode-btn.active{ border-color: var(--accent); color: var(--accent); background: var(--surface-2); }
-
 /* ---------- checklist ---------- */
 .item{
   background: var(--surface);
@@ -418,13 +401,9 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible, textarea:focus-
   font-size: 14px;
   padding: 14px;
   resize: none;
-  scrollbar-width: thin;
-  scrollbar-color: var(--line-strong) var(--surface);
+  overflow: auto;
 }
-.paste-textarea::-webkit-scrollbar{ width: 8px; }
-.paste-textarea::-webkit-scrollbar-track{ background: var(--surface); }
-.paste-textarea::-webkit-scrollbar-thumb{ background: var(--line-strong); border-radius: var(--radius-pill); }
-.paste-textarea:focus{ border-color: var(--accent); }
+.paste-textarea:focus{ border-color: var(--accent); outline: none; }
 .paste-number{
   appearance: none;
   -webkit-appearance: none;
@@ -480,7 +459,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible, textarea:focus-
   cursor: pointer;
   transition: border-color .15s, color .15s, background .15s;
 }
-.toggle-btn:hover{ color: var(--text); }
+.toggle-btn:hover{ color: var(--text); border-color: var(--accent); }
 .toggle-btn.active{ border-color: var(--accent); color: var(--accent); background: var(--surface-2); }
 .auto-badge{
   font-family: 'IBM Plex Mono', monospace;

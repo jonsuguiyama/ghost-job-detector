@@ -193,7 +193,7 @@ export default function PasteForm({ onScoreChange }) {
         </div>
       )}
 
-      <button className="reset-btn" onClick={reset}>{t.resetLabel}</button>
+      {!allAnswered && <button className="reset-btn" onClick={reset}>{t.resetLabel}</button>}
     </div>
   );
 }
