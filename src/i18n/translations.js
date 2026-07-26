@@ -85,6 +85,7 @@ export const translations = {
       { q: 'Quem é Jon Suguiyama?', a: '<p>Comecei minha carreira em desenvolvimento web em 2007 - HTML, CSS e muito ActionScript, construindo aqueles banners animados "milagre de 16kb" que hoje parecem uma lição antecipada de engenharia sob restrição.</p><p>Depois passei mais de uma década liderando times criativos: Senior Art Director, Head of Design, Concept Artist - trabalhando em campanhas publicitárias nacionais, animação para o mercado de games competitivos e um jogo construído do zero dentro de uma startup acelerada. Nunca parei de programar de vez ao longo do caminho.</p><p>Hoje voltei para onde comecei: construindo aplicações full-stack com Angular, React, TypeScript e Node.js. Projetos recentes incluem um gerenciador de tarefas drag-and-drop com sistema de demo ao vivo (sessões por token, PostgreSQL) e uma ferramenta de visualização de dados de CSV para dashboard (React, Recharts). Atualmente estou aprofundando minhas habilidades de backend - Java, Spring Boot, infraestrutura cloud - através de uma pós-graduação em Arquitetura de Software.</p><p>O que trago de um pouco diferente: já sentei na reunião com cliente, na sala de pitch e na pipeline de produção - não só no código. Sei traduzir um problema de negócio em algo que as pessoas realmente querem usar, e comunico como alguém que passou mais de 15 anos explicando decisões técnicas para quem não é técnico.</p><p>Buscando oportunidades como desenvolvedor(a) full-stack, onde essa combinação de execução técnica e sensibilidade de produto agregue valor real.</p><p>Projetos: <a href="https://github.com/jonsuguiyama" target="_blank" rel="noopener noreferrer">GitHub</a> · Portfólio de design: <a href="https://behance.net/jonsuguiyama" target="_blank" rel="noopener noreferrer">Behance</a></p>' }
     ],
     sourcesTitle: 'fontes',
+    sourcesPageLink: 'Ver todas as fontes na página de Dados',
     sources: [
       { name: 'Clarify Capital - Ghost Jobs 2.0 (2025)', url: 'https://clarifycapital.com/ghost-jobs' },
       { name: 'Clarify Capital - análise 2026', url: 'https://clarifycapital.com/ghost-jobs-2026' },
@@ -116,7 +117,8 @@ export const translations = {
       title: 'Dados sobre vaga fantasma',
       sub: 'Estatísticas reais, com fonte, sobre o tamanho do problema. Atualizamos essa página conforme novos dados aparecem.',
       cityChartTitle: 'taxa de vaga fantasma por cidade (EUA)',
-      loadMore: 'carregar mais'
+      loadMore: 'carregar mais',
+      waffleStat: { percent: 45, label: 'dos profissionais de RH dizem publicar vaga fantasma "regularmente"', source: 'LiveCareer, 2025' }
     },
     stats: [
       { value: '1 em 7', label: 'vagas ativas hoje são vaga fantasma', source: 'Clarify Capital, 2026', size: 'lg' },
@@ -219,6 +221,7 @@ export const translations = {
       { q: 'Who is Jon Suguiyama?', a: '<p>I started my career in web development in 2007 - HTML, CSS, and a lot of ActionScript, building the kind of "16kb miracle" animated banners that today feel like an early lesson in constraint-driven engineering.</p><p>Then I spent over a decade leading creative teams instead: Senior Art Director, Head of Design, Concept Artist - working on national ad campaigns, animation for the competitive gaming market, and a video game built from scratch inside a fast-moving startup. I never fully stopped coding along the way.</p><p>Today I\'m back where I started: building full-stack applications with Angular, React, TypeScript, and Node.js. Recent projects include a drag-and-drop task manager with a live demo system (token-based sessions, PostgreSQL) and a CSV-to-dashboard data visualization tool (React, Recharts). I\'m currently deepening my backend skills - Java, Spring Boot, cloud infrastructure - through a postgraduate program in Software Architecture.</p><p>What I bring that\'s a little different: I\'ve sat in the client meeting, the pitch room, and the production pipeline - not just the codebase. I know how to translate a business problem into something people actually want to use, and I communicate like someone who has spent 15+ years explaining technical decisions to non-technical stakeholders.</p><p>Currently looking for full-stack developer opportunities where that combination of technical execution and product sensibility adds real value.</p><p>Projects: <a href="https://github.com/jonsuguiyama" target="_blank" rel="noopener noreferrer">GitHub</a> · Design background: <a href="https://behance.net/jonsuguiyama" target="_blank" rel="noopener noreferrer">Behance</a></p>' }
     ],
     sourcesTitle: 'sources',
+    sourcesPageLink: 'See all sources on the Data page',
     sources: [
       { name: 'Clarify Capital - Ghost Jobs 2.0 (2025)', url: 'https://clarifycapital.com/ghost-jobs' },
       { name: 'Clarify Capital - 2026 analysis', url: 'https://clarifycapital.com/ghost-jobs-2026' },
@@ -250,7 +253,8 @@ export const translations = {
       title: 'Ghost job data',
       sub: 'Real, sourced statistics on how big this problem actually is. We update this page as new data shows up.',
       cityChartTitle: 'ghost job rate by city (U.S.)',
-      loadMore: 'load more'
+      loadMore: 'load more',
+      waffleStat: { percent: 45, label: 'of HR professionals say they post ghost jobs "regularly"', source: 'LiveCareer, 2025' }
     },
     stats: [
       { value: '1 in 7', label: 'active job posts today is a ghost job', source: 'Clarify Capital, 2026', size: 'lg' },
@@ -353,6 +357,7 @@ export const translations = {
       { q: '¿Quién es Jon Suguiyama?', a: '<p>Empecé mi carrera en desarrollo web en 2007 - HTML, CSS y mucho ActionScript, construyendo esos banners animados "milagro de 16kb" que hoy parecen una lección temprana de ingeniería bajo restricción.</p><p>Después pasé más de una década liderando equipos creativos: Senior Art Director, Head of Design, Concept Artist - trabajando en campañas publicitarias nacionales, animación para el mercado de videojuegos competitivos y un videojuego construido desde cero dentro de una startup acelerada. Nunca dejé de programar del todo en el camino.</p><p>Hoy volví a donde empecé: construyendo aplicaciones full-stack con Angular, React, TypeScript y Node.js. Proyectos recientes incluyen un gestor de tareas drag-and-drop con sistema de demo en vivo (sesiones por token, PostgreSQL) y una herramienta de visualización de datos de CSV a dashboard (React, Recharts). Actualmente estoy profundizando mis habilidades de backend - Java, Spring Boot, infraestructura cloud - a través de un posgrado en Arquitectura de Software.</p><p>Lo que aporto de un poco diferente: me he sentado en la reunión con el cliente, en la sala de pitch y en el pipeline de producción - no solo en el código. Sé traducir un problema de negocio en algo que la gente realmente quiere usar, y comunico como alguien que ha pasado más de 15 años explicando decisiones técnicas a quienes no son técnicos.</p><p>Buscando oportunidades como desarrollador(a) full-stack, donde esa combinación de ejecución técnica y sensibilidad de producto aporte valor real.</p><p>Proyectos: <a href="https://github.com/jonsuguiyama" target="_blank" rel="noopener noreferrer">GitHub</a> · Portafolio de diseño: <a href="https://behance.net/jonsuguiyama" target="_blank" rel="noopener noreferrer">Behance</a></p>' }
     ],
     sourcesTitle: 'fuentes',
+    sourcesPageLink: 'Ver todas las fuentes en la página de Datos',
     sources: [
       { name: 'Clarify Capital - Ghost Jobs 2.0 (2025)', url: 'https://clarifycapital.com/ghost-jobs' },
       { name: 'Clarify Capital - análisis 2026', url: 'https://clarifycapital.com/ghost-jobs-2026' },
@@ -384,7 +389,8 @@ export const translations = {
       title: 'Datos sobre vacantes fantasma',
       sub: 'Estadísticas reales, con fuente, sobre el tamaño real de este problema. Actualizamos esta página a medida que aparecen nuevos datos.',
       cityChartTitle: 'tasa de vacantes fantasma por ciudad (EE. UU.)',
-      loadMore: 'cargar más'
+      loadMore: 'cargar más',
+      waffleStat: { percent: 45, label: 'de los profesionales de RR.HH. dice publicar vacantes fantasma "regularmente"', source: 'LiveCareer, 2025' }
     },
     stats: [
       { value: '1 de 7', label: 'vacantes activas hoy es una vacante fantasma', source: 'Clarify Capital, 2026', size: 'lg' },

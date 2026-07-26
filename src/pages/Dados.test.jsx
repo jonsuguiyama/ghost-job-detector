@@ -26,10 +26,11 @@ describe('Dados page', () => {
     });
   });
 
-  it('renders up to the first page of stat tiles (12) without crashing', () => {
+  it('renders up to the first page of stat tiles (12) plus the waffle chart, without crashing', () => {
     renderDados();
-    const expectedCount = Math.min(12, translations.en.stats.length);
+    const expectedCount = Math.min(12, translations.en.stats.length) + 1; // +1 for the waffle chart's own value
     expect(screen.getAllByText(/./, { selector: '.stat-tile-value' })).toHaveLength(expectedCount);
+    expect(screen.getByText(`${translations.en.dataPage.waffleStat.percent}%`)).toBeInTheDocument();
   });
 
   it('does not render a "load more" sentinel when everything already fits on one page', () => {

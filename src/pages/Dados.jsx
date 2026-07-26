@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useLanguage } from '../i18n/LanguageContext';
 import StatTile from '../components/StatTile';
 import CityBarChart from '../components/CityBarChart';
+import WaffleChart from '../components/WaffleChart';
 import SourcesCompact from '../components/SourcesCompact';
 
 const PAGE_SIZE = 12;
@@ -40,6 +41,11 @@ export default function Dados() {
 
       <div className="bento-grid">
         <CityBarChart title={t.dataPage.cityChartTitle} />
+        <WaffleChart
+          percent={t.dataPage.waffleStat.percent}
+          label={t.dataPage.waffleStat.label}
+          source={t.dataPage.waffleStat.source}
+        />
         {visibleStats.map((stat) => (
           <StatTile
             key={`${stat.value}-${stat.label}`}

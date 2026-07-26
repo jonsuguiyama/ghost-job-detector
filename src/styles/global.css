@@ -555,6 +555,11 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible, textarea:focus-
 .stat-tile-label{ font-size: 14px; color: var(--text); line-height: 1.4; margin: 0 0 12px; }
 .stat-tile-source{ font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); margin: 0; }
 
+.waffle-grid{ display: grid; grid-template-columns: repeat(10, 1fr); gap: 3px; max-width: 180px; margin-bottom: 14px; }
+.waffle-dot{ width: 100%; aspect-ratio: 1; border-radius: 2px; background: var(--line); }
+.waffle-dot--filled{ background: var(--accent); }
+.waffle-value{ margin-top: 0; }
+
 .city-chart{
   grid-column: span 2;
   background: var(--surface);
