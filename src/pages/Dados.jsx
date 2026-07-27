@@ -34,7 +34,8 @@ export default function Dados() {
   const visibleStats = stats.slice(0, visibleCount);
   const hasMore = visibleCount < stats.length;
   const firstRows = visibleStats.slice(0, 4);
-  const restRows = visibleStats.slice(4);
+  const middleRows = visibleStats.slice(4, 11);
+  const lastRows = visibleStats.slice(11);
 
   const renderTile = (stat) => (
     <StatTile
@@ -56,12 +57,13 @@ export default function Dados() {
       <div className="bento-grid">
         {firstRows.map(renderTile)}
         <CityBarChart title={t.dataPage.cityChartTitle} />
-        {restRows.map(renderTile)}
+        {middleRows.map(renderTile)}
         <WaffleChart
           percent={t.dataPage.waffleStat.percent}
           label={t.dataPage.waffleStat.label}
           source={t.dataPage.waffleStat.source}
         />
+        {lastRows.map(renderTile)}
       </div>
 
       {hasMore && <div ref={sentinelRef} className="load-more-sentinel" />}

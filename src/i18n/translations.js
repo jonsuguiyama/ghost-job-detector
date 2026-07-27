@@ -129,9 +129,9 @@ export const translations = {
       { value: '69%', label: 'dos candidatos ghostados diz que foi depois que o processo de entrevistas já tinha começado', source: 'LiveCareer, 2025', span: 2, chart: 'donut' },
       { value: '40%', label: 'das empresas de tecnologia já publicaram pelo menos uma vaga fantasma', source: 'Greenhouse / ResumeBuilder', span: 2, chart: 'bar' },
       { value: '24,8%', label: 'das vagas em empresas de porte médio (1 mil a 5 mil funcionários) são fantasma', source: 'Greenhouse / ResumeBuilder', span: 1 },
+      { value: '90 dias', label: 'é o prazo pra contratar que empresas em Nova York devem cumprir ou divulgar na vaga, por lei', source: 'Lei de Nova York, via Fast Company Brasil', span: 1 },
       { value: '30,5%', label: 'taxa de vaga fantasma em Los Angeles, a maior entre grandes cidades dos EUA', source: 'Greenhouse / ResumeBuilder', span: 2 },
-      { value: '32%', label: 'dos candidatos relatam ser ignorados por empresas depois de aplicar', source: 'Job Seeker Nation Report 2026, Employ', span: 1, chart: 'bar' },
-      { value: '90 dias', label: 'é o prazo pra contratar que empresas em Nova York devem cumprir ou divulgar na vaga, por lei', source: 'Lei de Nova York, via Fast Company Brasil', span: 1 }
+      { value: '32%', label: 'dos candidatos relatam ser ignorados por empresas depois de aplicar', source: 'Job Seeker Nation Report 2026, Employ', span: 1, chart: 'bar' }
     ],
     footer: { builtBy: 'Feito por Jon Suguiyama com' }
   },
@@ -264,9 +264,9 @@ export const translations = {
       { value: '69%', label: 'of ghosted candidates say it happened after the interview process had already started', source: 'LiveCareer, 2025', span: 2, chart: 'donut' },
       { value: '40%', label: 'of tech companies have posted at least one fake job listing', source: 'Greenhouse / ResumeBuilder', span: 2, chart: 'bar' },
       { value: '24.8%', label: 'of postings at mid-size companies (1K-5K employees) are ghost jobs', source: 'Greenhouse / ResumeBuilder', span: 1 },
+      { value: '90 days', label: 'is the hiring window companies in New York must meet or disclose on the posting, by law', source: 'New York state law, via Fast Company Brasil', span: 1 },
       { value: '30.5%', label: 'ghost job rate in Los Angeles, the highest among major U.S. cities', source: 'Greenhouse / ResumeBuilder', span: 2 },
-      { value: '32%', label: 'of candidates report being ignored by companies after applying', source: 'Job Seeker Nation Report 2026, Employ', span: 1, chart: 'bar' },
-      { value: '90 days', label: 'is the hiring window companies in New York must meet or disclose on the posting, by law', source: 'New York state law, via Fast Company Brasil', span: 1 }
+      { value: '32%', label: 'of candidates report being ignored by companies after applying', source: 'Job Seeker Nation Report 2026, Employ', span: 1, chart: 'bar' }
     ],
     footer: { builtBy: 'Built by Jon Suguiyama with' }
   },
@@ -399,9 +399,9 @@ export const translations = {
       { value: '69%', label: 'de los candidatos ghosteados dice que fue después de que el proceso de entrevistas ya había comenzado', source: 'LiveCareer, 2025', span: 2, chart: 'donut' },
       { value: '40%', label: 'de las empresas de tecnología ya publicó al menos una vacante fantasma', source: 'Greenhouse / ResumeBuilder', span: 2, chart: 'bar' },
       { value: '24,8%', label: 'de las vacantes en empresas de tamaño medio (1 mil a 5 mil empleados) son fantasma', source: 'Greenhouse / ResumeBuilder', span: 1 },
+      { value: '90 días', label: 'es el plazo de contratación que las empresas en Nueva York deben cumplir o revelar en la vacante, por ley', source: 'Ley de Nueva York, vía Fast Company Brasil', span: 1 },
       { value: '30,5%', label: 'tasa de vacante fantasma en Los Ángeles, la más alta entre grandes ciudades de EE. UU.', source: 'Greenhouse / ResumeBuilder', span: 2 },
-      { value: '32%', label: 'de los candidatos reporta ser ignorado por empresas después de postularse', source: 'Job Seeker Nation Report 2026, Employ', span: 1, chart: 'bar' },
-      { value: '90 días', label: 'es el plazo de contratación que las empresas en Nueva York deben cumplir o revelar en la vacante, por ley', source: 'Ley de Nueva York, vía Fast Company Brasil', span: 1 }
+      { value: '32%', label: 'de los candidatos reporta ser ignorado por empresas después de postularse', source: 'Job Seeker Nation Report 2026, Employ', span: 1, chart: 'bar' }
     ],
     footer: { builtBy: 'Hecho por Jon Suguiyama con' }
   }
