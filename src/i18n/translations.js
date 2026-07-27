@@ -116,6 +116,7 @@ export const translations = {
       sub: 'Estatísticas reais, com fonte, sobre o tamanho do problema. Atualizamos essa página conforme novos dados aparecem.',
       cityChartTitle: 'taxa de vaga fantasma por cidade (EUA)',
       loadMore: 'carregar mais',
+      loadingMore: 'carregando mais...',
       waffleStat: { percent: 45, label: 'dos profissionais de RH dizem publicar vaga fantasma "regularmente"', source: 'LiveCareer, 2025' }
     },
     stats: [
@@ -251,6 +252,7 @@ export const translations = {
       sub: 'Real, sourced statistics on how big this problem actually is. We update this page as new data shows up.',
       cityChartTitle: 'ghost job rate by city (U.S.)',
       loadMore: 'load more',
+      loadingMore: 'loading more...',
       waffleStat: { percent: 45, label: 'of HR professionals say they post ghost jobs "regularly"', source: 'LiveCareer, 2025' }
     },
     stats: [
@@ -386,6 +388,7 @@ export const translations = {
       sub: 'Estadísticas reales, con fuente, sobre el tamaño real de este problema. Actualizamos esta página a medida que aparecen nuevos datos.',
       cityChartTitle: 'tasa de vacantes fantasma por ciudad (EE. UU.)',
       loadMore: 'cargar más',
+      loadingMore: 'cargando más...',
       waffleStat: { percent: 45, label: 'de los profesionales de RR.HH. dice publicar vacantes fantasma "regularmente"', source: 'LiveCareer, 2025' }
     },
     stats: [

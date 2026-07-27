@@ -5,7 +5,8 @@ import CityBarChart from '../components/CityBarChart';
 import WaffleChart from '../components/WaffleChart';
 import SourcesCompact from '../components/SourcesCompact';
 
-export const ROWS_PER_PAGE = 10;
+export const ROWS_PER_PAGE = 3;
+const LOAD_DELAY_MS = 400;
 const GRID_COLUMNS = 3;
 
 export function buildRows(stats) {
@@ -41,10 +42,14 @@ export default function Dados() {
   const stats = t.stats;
   const rows = useMemo(() => buildRows(stats), [stats]);
   const [visibleRowCount, setVisibleRowCount] = useState(ROWS_PER_PAGE);
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
   const sentinelRef = useRef(null);
+  const loadingRef = useRef(false);
 
   useEffect(() => {
     setVisibleRowCount(ROWS_PER_PAGE);
+    setIsLoadingMore(false);
+    loadingRef.current = false;
   }, [rows]);
 
   useEffect(() => {
@@ -52,8 +57,14 @@ export default function Dados() {
     if (!node) return undefined;
 
     const observer = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        setVisibleRowCount((count) => Math.min(count + ROWS_PER_PAGE, rows.length));
+      if (entries[0].isIntersecting && !loadingRef.current) {
+        loadingRef.current = true;
+        setIsLoadingMore(true);
+        setTimeout(() => {
+          setVisibleRowCount((count) => Math.min(count + ROWS_PER_PAGE, rows.length));
+          setIsLoadingMore(false);
+          loadingRef.current = false;
+        }, LOAD_DELAY_MS);
       }
     });
 
@@ -103,7 +114,11 @@ export default function Dados() {
         )}
       </div>
 
-      {hasMore && <div ref={sentinelRef} className="load-more-sentinel" />}
+      {hasMore && (
+        <div ref={sentinelRef} className="load-more-sentinel">
+          {isLoadingMore && <p className="load-more-status">{t.dataPage.loadingMore}</p>}
+        </div>
+      )}
 
       <SourcesCompact />
     </div>
