@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { LanguageProvider } from '../i18n/LanguageContext';
-import Dados from './Dados';
+import Dados, { buildRows, ROWS_PER_PAGE } from './Dados';
 import { translations } from '../i18n/translations';
 import { cityBreakdown } from '../lib/cityData';
 
@@ -40,9 +40,22 @@ describe('Dados page', () => {
     expect(donutEl).toHaveTextContent(donutStat.value);
   });
 
-  it('shows a "load more" sentinel when there are more stats than fit on one page', () => {
+  it('never splits a bento row across pages - each row\'s spans always sum to exactly 3', () => {
+    const rows = buildRows(translations.en.stats);
+    rows.forEach((row) => {
+      const rowSpan = row.reduce((sum, cell) => sum + (cell.type === 'stat' ? cell.stat.span : 2), 0);
+      expect(rowSpan).toBe(3);
+    });
+  });
+
+  it('shows a "load more" sentinel only when there are more rows than fit on one page', () => {
     const { container } = renderDados();
-    expect(translations.en.stats.length).toBeGreaterThan(12);
-    expect(container.querySelector('.load-more-sentinel')).toBeInTheDocument();
+    const totalRows = buildRows(translations.en.stats).length;
+    const sentinel = container.querySelector('.load-more-sentinel');
+    if (totalRows > ROWS_PER_PAGE) {
+      expect(sentinel).toBeInTheDocument();
+    } else {
+      expect(sentinel).not.toBeInTheDocument();
+    }
   });
 });

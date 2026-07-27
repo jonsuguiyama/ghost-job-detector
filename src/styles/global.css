@@ -559,7 +559,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible, textarea:focus-
 .stat-tile-row-text .stat-tile-label{ margin: 0 0 8px; }
 .stat-tile-row-text .stat-tile-source{ margin: 0; }
 
-.donut-wrap{ position: relative; width: 130px; height: 130px; flex: none; }
+.donut-wrap{ position: relative; width: 180px; height: 180px; flex: none; }
 .donut-svg{ width: 100%; height: 100%; transform: rotate(-90deg); }
 .donut-track{ fill: none; stroke: var(--line); stroke-width: 8; }
 .donut-fill{ fill: none; stroke: var(--accent); stroke-width: 8; stroke-linecap: round; transition: stroke-dashoffset .4s; }
@@ -569,7 +569,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible, textarea:focus-
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 26px;
+  font-size: 34px;
   font-weight: 700;
   color: var(--text);
 }
