@@ -44,6 +44,7 @@ export default function Dados() {
       source={stat.source}
       span={stat.span}
       chart={stat.chart}
+      percent={stat.percent}
     />
   );
 

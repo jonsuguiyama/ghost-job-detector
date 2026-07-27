@@ -1,4 +1,4 @@
-function DonutValue({ percent }) {
+function DonutValue({ value, percent }) {
   const radius = 34;
   const circumference = 2 * Math.PI * radius;
   const offset = circumference - (percent / 100) * circumference;
@@ -14,7 +14,7 @@ function DonutValue({ percent }) {
           strokeDashoffset={offset}
         />
       </svg>
-      <span className="donut-percent">{percent}%</span>
+      <span className="donut-percent">{value}</span>
     </div>
   );
 }
@@ -30,13 +30,13 @@ function BarValue({ value, percent }) {
   );
 }
 
-export default function StatTile({ value, label, source, span = 1, chart }) {
-  const percent = Number.parseFloat(value);
+export default function StatTile({ value, label, source, span = 1, chart, percent }) {
+  const resolvedPercent = percent ?? Number.parseFloat(value);
 
   return (
     <div className="stat-tile" style={{ gridColumn: `span ${span}` }}>
-      {chart === 'donut' && <DonutValue percent={percent} />}
-      {chart === 'bar' && <BarValue value={value} percent={percent} />}
+      {chart === 'donut' && <DonutValue value={value} percent={resolvedPercent} />}
+      {chart === 'bar' && <BarValue value={value} percent={resolvedPercent} />}
       {!chart && <p className="stat-tile-value">{value}</p>}
       <p className="stat-tile-label">{label}</p>
       <p className="stat-tile-source">{source}</p>

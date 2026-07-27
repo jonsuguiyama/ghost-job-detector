@@ -554,7 +554,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible, textarea:focus-
 .stat-tile-label{ font-size: 14px; color: var(--text); line-height: 1.4; margin: 0 0 12px; }
 .stat-tile-source{ font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); margin: 0; }
 
-.donut-wrap{ position: relative; width: 80px; height: 80px; margin-bottom: 12px; }
+.donut-wrap{ position: relative; width: 96px; height: 96px; margin-bottom: 12px; }
 .donut-svg{ width: 100%; height: 100%; transform: rotate(-90deg); }
 .donut-track{ fill: none; stroke: var(--line); stroke-width: 8; }
 .donut-fill{ fill: none; stroke: var(--accent); stroke-width: 8; stroke-linecap: round; transition: stroke-dashoffset .4s; }
@@ -564,16 +564,15 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible, textarea:focus-
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 700;
   color: var(--text);
 }
 .mini-bar-track{ height: 8px; background: var(--page); border-radius: var(--radius-pill); overflow: hidden; margin: 4px 0 12px; }
 .mini-bar-fill{ height: 100%; background: var(--accent); border-radius: var(--radius-pill); }
 
-.waffle-tile{ grid-column: span 3; height: auto; align-items: center; text-align: center; padding: 32px 24px; }
-.waffle-tile .stat-tile-label{ max-width: 480px; }
-.waffle-grid{ display: grid; grid-template-columns: repeat(10, 1fr); gap: 3px; max-width: 180px; margin-bottom: 14px; }
+.waffle-tile{ grid-column: span 2; align-items: center; text-align: center; }
+.waffle-grid{ display: grid; grid-template-columns: repeat(10, 1fr); gap: 3px; max-width: 150px; margin-bottom: 14px; }
 .waffle-dot{ width: 100%; aspect-ratio: 1; border-radius: 2px; background: var(--line); }
 .waffle-dot--filled{ background: var(--accent); }
 .waffle-value{ margin-top: 0; }
