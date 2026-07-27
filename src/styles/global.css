@@ -606,10 +606,6 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible, textarea:focus-
 .load-more-sentinel{ min-height: 1px; display: flex; justify-content: center; padding: 8px 0; }
 .load-more-status{ font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--muted); margin: 0; }
 
-@media (prefers-reduced-motion: reduce){
-  .stat-tile, .city-chart{ animation: none; }
-}
-
 @media (max-width: 860px){
   .bento-grid{ grid-template-columns: repeat(2, 1fr); }
   .city-chart{ grid-column: span 2; }
