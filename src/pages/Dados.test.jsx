@@ -26,17 +26,23 @@ describe('Dados page', () => {
     });
   });
 
-  it('renders up to the first page of stat tiles (12) plus the waffle chart, without crashing', () => {
+  it('renders the waffle chart value and label', () => {
     renderDados();
-    const expectedCount = Math.min(12, translations.en.stats.length) + 1; // +1 for the waffle chart's own value
-    expect(screen.getAllByText(/./, { selector: '.stat-tile-value' })).toHaveLength(expectedCount);
     expect(screen.getByText(`${translations.en.dataPage.waffleStat.percent}%`)).toBeInTheDocument();
+    expect(screen.getByText(translations.en.dataPage.waffleStat.label)).toBeInTheDocument();
   });
 
-  it('does not render a "load more" sentinel when everything already fits on one page', () => {
+  it('renders a donut chart for stats flagged chart: "donut" instead of a plain value', () => {
     const { container } = renderDados();
-    if (translations.en.stats.length <= 12) {
-      expect(container.querySelector('.load-more-sentinel')).not.toBeInTheDocument();
-    }
+    const donutStat = translations.en.stats.find((s) => s.chart === 'donut');
+    const donutEl = container.querySelector('.donut-percent');
+    expect(donutEl).toBeInTheDocument();
+    expect(donutEl).toHaveTextContent(donutStat.value);
+  });
+
+  it('shows a "load more" sentinel when there are more stats than fit on one page', () => {
+    const { container } = renderDados();
+    expect(translations.en.stats.length).toBeGreaterThan(12);
+    expect(container.querySelector('.load-more-sentinel')).toBeInTheDocument();
   });
 });

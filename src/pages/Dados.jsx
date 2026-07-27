@@ -43,6 +43,7 @@ export default function Dados() {
       label={stat.label}
       source={stat.source}
       span={stat.span}
+      chart={stat.chart}
     />
   );
 
