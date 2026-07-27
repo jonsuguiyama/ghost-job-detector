@@ -2,9 +2,9 @@ import { cityBreakdown } from '../lib/cityData';
 
 const MAX_VALUE = Math.max(...cityBreakdown.map((d) => d.value));
 
-export default function CityBarChart({ title }) {
+export default function CityBarChart({ title, style }) {
   return (
-    <div className="city-chart">
+    <div className="city-chart" style={style}>
       <p className="section-title">{title}</p>
       <div className="city-chart-rows">
         {cityBreakdown.map((row) => (

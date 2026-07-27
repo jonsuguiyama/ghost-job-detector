@@ -538,6 +538,10 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible, textarea:focus-
   gap: 16px;
   margin-bottom: 32px;
 }
+@keyframes bento-cell-in{
+  from{ opacity: 0; transform: translateX(-16px); }
+  to{ opacity: 1; transform: translateX(0); }
+}
 .stat-tile{
   height: 250px;
   background: var(--surface);
@@ -548,6 +552,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible, textarea:focus-
   flex-direction: column;
   justify-content: center;
   transition: border-color .15s;
+  animation: bento-cell-in .45s ease both;
 }
 .stat-tile:hover{ border-color: var(--accent); }
 .stat-tile-value{ font-size: 36px; font-weight: 700; color: var(--accent); margin: 0 0 10px; line-height: 1; }
@@ -588,6 +593,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible, textarea:focus-
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   padding: 24px 28px;
+  animation: bento-cell-in .45s ease both;
 }
 .city-chart .section-title{ margin-top: 0; }
 .city-chart-rows{ display: flex; flex-direction: column; gap: 14px; margin-top: 16px; }
@@ -599,6 +605,10 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible, textarea:focus-
 
 .load-more-sentinel{ min-height: 1px; display: flex; justify-content: center; padding: 8px 0; }
 .load-more-status{ font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--muted); margin: 0; }
+
+@media (prefers-reduced-motion: reduce){
+  .stat-tile, .city-chart{ animation: none; }
+}
 
 @media (max-width: 860px){
   .bento-grid{ grid-template-columns: repeat(2, 1fr); }

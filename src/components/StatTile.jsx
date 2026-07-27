@@ -42,19 +42,20 @@ function BarValue({ value, percent }) {
   );
 }
 
-export default function StatTile({ value, label, source, span = 1, chart, percent }) {
+export default function StatTile({ value, label, source, span = 1, chart, percent, style }) {
   const resolvedPercent = percent ?? Number.parseFloat(value);
+  const tileStyle = { gridColumn: `span ${span}`, ...style };
 
   if (chart === 'donut') {
     return (
-      <div className="stat-tile" style={{ gridColumn: `span ${span}` }}>
+      <div className="stat-tile" style={tileStyle}>
         <DonutTile value={value} label={label} source={source} percent={resolvedPercent} />
       </div>
     );
   }
 
   return (
-    <div className="stat-tile" style={{ gridColumn: `span ${span}` }}>
+    <div className="stat-tile" style={tileStyle}>
       {chart === 'bar' && <BarValue value={value} percent={resolvedPercent} />}
       {!chart && <p className="stat-tile-value">{value}</p>}
       <p className="stat-tile-label">{label}</p>

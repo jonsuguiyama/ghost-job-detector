@@ -75,9 +75,9 @@ export default function Dados() {
   const visibleRows = rows.slice(0, visibleRowCount);
   const hasMore = visibleRowCount < rows.length;
 
-  const renderCell = (cell, key) => {
+  const renderCell = (cell, key, style) => {
     if (cell.type === 'city') {
-      return <CityBarChart key={key} title={t.dataPage.cityChartTitle} />;
+      return <CityBarChart key={key} title={t.dataPage.cityChartTitle} style={style} />;
     }
     if (cell.type === 'waffle') {
       return (
@@ -86,6 +86,7 @@ export default function Dados() {
           percent={t.dataPage.waffleStat.percent}
           label={t.dataPage.waffleStat.label}
           source={t.dataPage.waffleStat.source}
+          style={style}
         />
       );
     }
@@ -99,6 +100,7 @@ export default function Dados() {
         span={stat.span}
         chart={stat.chart}
         percent={stat.percent}
+        style={style}
       />
     );
   };
@@ -110,7 +112,9 @@ export default function Dados() {
 
       <div className="bento-grid">
         {visibleRows.map((row, rowIndex) =>
-          row.map((cell, cellIndex) => renderCell(cell, `${rowIndex}-${cellIndex}`))
+          row.map((cell, cellIndex) =>
+            renderCell(cell, `${rowIndex}-${cellIndex}`, { animationDelay: `${cellIndex * 110}ms` })
+          )
         )}
       </div>
 
