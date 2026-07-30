@@ -42,3 +42,7 @@ This started as a small personal project to deal with a frustrating job search, 
 - Recruiters and people who've been on the hiring side: your perspective on what actually signals a ghost job is especially valuable. Feel free to open an issue with suggestions even if you don't write code.
 
 No contribution is too small. Typo fixes, better copy, a source you found that we missed, all of it helps.
+
+## License
+
+MIT — see [LICENSE](./LICENSE).
