@@ -19,5 +19,9 @@ jobs:
 
       - run: npm ci
       - run: npm run lint
-      - run: npm run test
+      - run: npm run test -- --coverage
+      - uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: coverage/lcov.info
       - run: npm run build

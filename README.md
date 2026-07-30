@@ -1,5 +1,10 @@
 # GhostGig
 
+[![CI](https://github.com/jonsuguiyama/ghost-job-detector/actions/workflows/ci.yml/badge.svg)](https://github.com/jonsuguiyama/ghost-job-detector/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/jonsuguiyama/ghost-job-detector/graph/badge.svg)](https://codecov.io/gh/jonsuguiyama/ghost-job-detector)
+[![Version](https://img.shields.io/github/package-json/v/jonsuguiyama/ghost-job-detector)](https://github.com/jonsuguiyama/ghost-job-detector/blob/main/package.json)
+[![License](https://img.shields.io/github/license/jonsuguiyama/ghost-job-detector)](https://github.com/jonsuguiyama/ghost-job-detector/blob/main/LICENSE)
+
 Checklist and automatic text analysis to tell whether a job posting is real or a ghost job - PT/EN/ES, with real sources.
 
 Live at [ghostgig.vercel.app](https://ghostgig.vercel.app).
