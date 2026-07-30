@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router';
 import GhostIcon from './GhostIcon';
 import { useLanguage } from '../i18n/LanguageContext';
 import { APP_NAME } from '../lib/constants';

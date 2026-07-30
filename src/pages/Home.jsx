@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { useLanguage } from '../i18n/LanguageContext';
 import Ghostometer from '../components/Ghostometer';
 import { track } from '../lib/analytics';
