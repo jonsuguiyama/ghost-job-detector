@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useLanguage } from '../i18n/LanguageContext';
+import { usePrefersReducedMotion } from '../lib/usePrefersReducedMotion';
 import QuoteCarousel from './QuoteCarousel';
 
 const statusVar = {
@@ -27,14 +28,15 @@ export default function Ghostometer({
   const { t } = useLanguage();
   const [autoIndex, setAutoIndex] = useState(0);
   const intervalRef = useRef(null);
+  const reducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
-    if (mode !== 'auto') return undefined;
+    if (mode !== 'auto' || reducedMotion) return undefined;
     intervalRef.current = setInterval(() => {
       setAutoIndex((i) => (i + 1) % AUTO_SEQUENCE.length);
     }, 3200);
     return () => clearInterval(intervalRef.current);
-  }, [mode]);
+  }, [mode, reducedMotion]);
 
   const effectiveRatio = mode === 'auto' ? AUTO_SEQUENCE[autoIndex].ratio : ratio;
   const effectiveVerdict = mode === 'auto' ? t.verdicts[AUTO_SEQUENCE[autoIndex].bucket] : verdictInfo;

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link, NavLink } from 'react-router';
+import { List, X } from '@phosphor-icons/react';
 import GhostIcon from './GhostIcon';
 import { useLanguage } from '../i18n/LanguageContext';
 import { APP_NAME } from '../lib/constants';
@@ -22,7 +23,7 @@ export default function Header() {
           aria-expanded={navOpen}
           onClick={() => setNavOpen((v) => !v)}
         >
-          ☰
+          {navOpen ? <X size={18} weight="bold" /> : <List size={18} weight="bold" />}
         </button>
 
         <nav className={`main-nav${navOpen ? ' open' : ''}`} onClick={() => setNavOpen(false)}>
@@ -36,7 +37,7 @@ export default function Header() {
             {t.nav.data}
           </NavLink>
           <NavLink to="/sobre" className={({ isActive }) => (isActive ? 'active' : '')}>
-            {APP_NAME}
+            {t.nav.about}
           </NavLink>
         </nav>
 

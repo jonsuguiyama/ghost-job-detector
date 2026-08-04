@@ -33,6 +33,15 @@
   --header-height: 64px;
 }
 
+@media (prefers-contrast: more){
+  :root{
+    --text-secondary: #b3b3b3;
+    --muted: #a3a3a3;
+    --line: #545454;
+    --line-strong: #6b6b6b;
+  }
+}
+
 *{ box-sizing: border-box; }
 html{ scrollbar-gutter: stable; overflow-y: scroll; }
 html, body{ margin: 0; padding: 0; }

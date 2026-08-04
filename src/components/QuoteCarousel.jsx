@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useLanguage } from '../i18n/LanguageContext';
+import { usePrefersReducedMotion } from '../lib/usePrefersReducedMotion';
 
 const WORDS_PER_MINUTE = 200;
 const MIN_DURATION_MS = 4500;
@@ -16,19 +17,21 @@ export default function QuoteCarousel() {
   const [index, setIndex] = useState(0);
   const quotes = t.quotes;
   const duration = readingDuration(quotes[index].text);
+  const reducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
+    if (reducedMotion) return undefined;
     const timer = setTimeout(() => {
       setIndex((i) => (i + 1) % quotes.length);
     }, duration);
     return () => clearTimeout(timer);
-  }, [index, duration, quotes.length]);
+  }, [index, duration, quotes.length, reducedMotion]);
 
   const quote = quotes[index];
 
   return (
     <div className="quote-carousel">
-      <blockquote key={index} className="quote-enter">
+      <blockquote key={index} className={reducedMotion ? undefined : 'quote-enter'}>
         “{quote.text}”
         <cite>{quote.source}</cite>
       </blockquote>
