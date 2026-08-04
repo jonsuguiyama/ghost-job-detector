@@ -1,6 +1,4 @@
-<img src="public/ghost-icon.svg" width="48" height="48" alt="GhostGig logo" />
-
-# GhostGig
+# <img src="public/ghost-icon.svg" width="32" height="32" valign="middle" alt="GhostGig logo" /> GhostGig
 
 [![CI](https://github.com/jonsuguiyama/ghost-job-detector/actions/workflows/ci.yml/badge.svg)](https://github.com/jonsuguiyama/ghost-job-detector/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/gh/jonsuguiyama/ghost-job-detector/graph/badge.svg)](https://codecov.io/gh/jonsuguiyama/ghost-job-detector)
