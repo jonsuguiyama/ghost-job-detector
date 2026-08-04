@@ -13,6 +13,9 @@ dist-ssr
 coverage
 *.local
 
+# old pre-React single-file prototype, kept locally for reference only
+legacy-single-file-version
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
