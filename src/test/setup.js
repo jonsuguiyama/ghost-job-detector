@@ -17,3 +17,15 @@ class MockIntersectionObserver {
 }
 MockIntersectionObserver.instances = [];
 globalThis.IntersectionObserver = MockIntersectionObserver;
+
+// jsdom has no matchMedia; default to "no preference" so existing motion-based
+// tests keep behaving as before. Tests exercising prefers-reduced-motion can
+// override window.matchMedia per-test.
+window.matchMedia = window.matchMedia || function matchMedia(query) {
+  return {
+    matches: false,
+    media: query,
+    addEventListener() {},
+    removeEventListener() {}
+  };
+};

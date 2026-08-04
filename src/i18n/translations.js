@@ -2,7 +2,7 @@ import { GITHUB_REPO_URL } from '../lib/constants';
 
 export const translations = {
   pt: {
-    nav: { home: 'Início', checklist: 'Checklist Manual', analysis: 'Análise Automática', data: 'Dados' },
+    nav: { home: 'Início', checklist: 'Checklist Manual', analysis: 'Análise Automática', data: 'Dados', about: 'Sobre' },
     home: {
       title: 'Essa vaga existe de verdade?',
       sub: 'Aprenda a reconhecer os sinais antes de perder tempo e energia em candidaturas que não vão a lugar nenhum.',
@@ -138,7 +138,7 @@ export const translations = {
   },
 
   en: {
-    nav: { home: 'Home', checklist: 'Manual Checklist', analysis: 'Automatic Analysis', data: 'Data' },
+    nav: { home: 'Home', checklist: 'Manual Checklist', analysis: 'Automatic Analysis', data: 'Data', about: 'About' },
     home: {
       title: 'Is this job posting real?',
       sub: 'Learn to spot the signs before you waste time and energy on applications that go nowhere.',
@@ -274,7 +274,7 @@ export const translations = {
   },
 
   es: {
-    nav: { home: 'Inicio', checklist: 'Checklist Manual', analysis: 'Análisis Automático', data: 'Datos' },
+    nav: { home: 'Inicio', checklist: 'Checklist Manual', analysis: 'Análisis Automático', data: 'Datos', about: 'Acerca de' },
     home: {
       title: '¿Esta vacante existe de verdad?',
       sub: 'Aprende a reconocer las señales antes de perder tiempo y energía en postulaciones que no van a ningún lado.',
