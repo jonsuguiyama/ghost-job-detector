@@ -45,4 +45,4 @@ No contribution is too small. Typo fixes, better copy, a source you found that w
 
 ## License
 
-MIT — see [LICENSE](./LICENSE).
+MIT - see [LICENSE](./LICENSE).
